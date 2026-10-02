@@ -1,0 +1,953 @@
+{
+  "meta": {
+    "store_name": "Fernwood Candle Co.",
+    "store_domain": "fernwoodcandle.com",
+    "prepared_date": "2026-09-29",
+    "timezone": "America/Los_Angeles",
+    "tz_label": "PT",
+    "profile": "returning",
+    "gmv_band": "$5M-$20M",
+    "team": [
+      "Maya",
+      "Devin"
+    ],
+    "currency": "USD",
+    "platform": "shopify",
+    "privy_first_send": "2024-03-04",
+    "privy_last_send": "2026-09-25",
+    "timezone_sending": true,
+    "has_csm": true
+  },
+  "window": {
+    "black_friday": "2026-11-27",
+    "offer_start": "2026-11-26T08:30",
+    "offer_end": "2026-12-04T23:59",
+    "extension": true,
+    "early_access_start": "2026-11-24"
+  },
+  "sale": {
+    "headline": "Spend $75, save 20%. Spend $125, save 25% and get a free travel tin.",
+    "terms": "VIPs and early-access signups shop from Tue, Nov 24. The same offer runs through the Friday extension. Refills and gift cards excluded.",
+    "margin": {
+      "rows": [
+        {
+          "tier": "Spend $75, save 20%",
+          "keep": "$26.25 on a $75 cart"
+        },
+        {
+          "tier": "Spend $125, save 25%, plus a travel tin",
+          "keep": "$37.50 on a $125 cart, before the tin"
+        }
+      ],
+      "note": "Based on your 55% contribution margin."
+    }
+  },
+  "review": {
+    "stats": [
+      {
+        "label": "Revenue",
+        "value": "$468,200",
+        "caption": "Nov 27 to Dec 5, by order date",
+        "source": "Shopify",
+        "basis": "order_date"
+      },
+      {
+        "label": "Orders",
+        "value": "6,552",
+        "caption": "Same nine days",
+        "source": "Shopify",
+        "basis": "count"
+      },
+      {
+        "label": "Average order",
+        "value": "$71.46",
+        "caption": "With a 30% sitewide code",
+        "source": "Shopify",
+        "basis": "order_date"
+      },
+      {
+        "label": "First-time buyers",
+        "value": "3,410",
+        "caption": "58% haven't ordered again",
+        "source": "Shopify",
+        "basis": "count"
+      }
+    ],
+    "daily": {
+      "source": "Shopify",
+      "basis": "order_date",
+      "days": [
+        {
+          "date": "2025-11-20",
+          "revenue": 6200
+        },
+        {
+          "date": "2025-11-21",
+          "revenue": 6800
+        },
+        {
+          "date": "2025-11-22",
+          "revenue": 7400
+        },
+        {
+          "date": "2025-11-23",
+          "revenue": 6900
+        },
+        {
+          "date": "2025-11-24",
+          "revenue": 9800
+        },
+        {
+          "date": "2025-11-25",
+          "revenue": 10400
+        },
+        {
+          "date": "2025-11-26",
+          "revenue": 12100
+        },
+        {
+          "date": "2025-11-27",
+          "revenue": 48300
+        },
+        {
+          "date": "2025-11-28",
+          "revenue": 162400
+        },
+        {
+          "date": "2025-11-29",
+          "revenue": 71900
+        },
+        {
+          "date": "2025-11-30",
+          "revenue": 52600
+        },
+        {
+          "date": "2025-12-01",
+          "revenue": 77100
+        },
+        {
+          "date": "2025-12-02",
+          "revenue": 21800
+        },
+        {
+          "date": "2025-12-03",
+          "revenue": 13200
+        },
+        {
+          "date": "2025-12-04",
+          "revenue": 11600
+        },
+        {
+          "date": "2025-12-05",
+          "revenue": 9300
+        }
+      ]
+    },
+    "channels": {
+      "source": "Privy",
+      "basis": "send_date",
+      "total": 190500,
+      "by_channel": {
+        "email": 154900,
+        "sms": 35600
+      },
+      "by_type": {
+        "campaign": 132300,
+        "flow": 58200
+      }
+    },
+    "findings": [
+      {
+        "observation": "Last year's Tuesday-to-Friday extension brought in $55,900 after Cyber Monday.",
+        "source": "Shopify",
+        "change": "Plan the extension from the start, with its own emails and SMS",
+        "task": "t-extend",
+        "task_label": "Extension task"
+      },
+      {
+        "observation": "Last year the cart flow waited four hours, and its own 15% code stacked on top of the sale.",
+        "source": "Privy flow settings",
+        "change": "Send the first cart email after 45 minutes, and add an SMS step",
+        "task": "t-cart",
+        "task_label": "Cart flow task"
+      },
+      {
+        "observation": "58% of last year's 3,410 first-time buyers haven't ordered again.",
+        "source": "Shopify",
+        "change": "Build a welcome series for first-time buyers before the sale",
+        "task": "t-nurture",
+        "task_label": "New-buyer series task"
+      }
+    ],
+    "callout": {
+      "figure": "$58,200",
+      "text": "came from flows, running on their own during the sale."
+    }
+  },
+  "plan": {
+    "title": "31 tasks between now and Saturday, Dec 5",
+    "lede": "Each task is dated, with its status and area, and setup details where you need them."
+  },
+  "tasks": [
+    {
+      "id": "t-offer",
+      "date": "2026-10-02",
+      "owner": "Maya",
+      "text": "Lock the offer: tiers at $75 and $125, refills and gift cards excluded",
+      "detail": "Set both tiers as automatic discounts in Shopify so no code is needed, and exclude the Refills and Gift cards collections. For the free tin, use a Buy X Get Y automatic discount with a $125 minimum: shoppers must add the tin to their cart, so say so on the sale page and in the launch email.",
+      "ref": "R41",
+      "category": "offer",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "merchant"
+    },
+    {
+      "id": "t-extend",
+      "date": "2026-10-02",
+      "owner": "Maya",
+      "text": "Decide to extend through Fri, Dec 4, and plan its sends",
+      "ref": "R28",
+      "category": "offer",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended"
+    },
+    {
+      "id": "t-dmarc",
+      "date": "2026-10-02",
+      "owner": "Devin",
+      "text": "Confirm SPF, DKIM, and DMARC all pass for fernwoodcandle.com",
+      "detail": "Check the sending domain in Privy's settings and the records in your DNS. Fix anything that fails before the first October send.",
+      "ref": "R33",
+      "category": "compliance",
+      "status": "unknown",
+      "priority": "P1",
+      "evidence": "merchant"
+    },
+    {
+      "id": "t-display",
+      "date": "2026-10-05",
+      "owner": "Maya",
+      "text": "Swap the welcome display's 10% offer for early access, and add an SMS step",
+      "detail": "Home and candle collections, new visitors, after 8 seconds, once every 3 days. Keep the thank-you page SMS signup on, with no discount. Add an SMS signup step with Privy's consent wording.",
+      "ref": [
+        "R16",
+        "R17"
+      ],
+      "category": "displays",
+      "status": "update",
+      "priority": "P1",
+      "evidence": "privy"
+    },
+    {
+      "id": "t-cart",
+      "date": "2026-10-06",
+      "owner": "Maya",
+      "text": "Update the abandoned cart flow: first email at 45 minutes, plus an SMS step",
+      "detail": "Read the flow's current delays and discount first, then change only what differs.",
+      "ref": "F05",
+      "category": "flows",
+      "status": "update",
+      "priority": "P1",
+      "evidence": "privy"
+    },
+    {
+      "id": "t-welcome",
+      "date": "2026-10-09",
+      "owner": "Maya",
+      "text": "Switch the welcome email and SMS to early access instead of a code",
+      "ref": [
+        "F01",
+        "F02"
+      ],
+      "category": "flows",
+      "status": "update",
+      "priority": "P1",
+      "evidence": "privy"
+    },
+    {
+      "id": "t-reengage",
+      "date": "2026-10-09",
+      "owner": "Maya",
+      "text": "Send a re-engagement email to contacts who haven't opened in 90 days",
+      "ref": [
+        "R31",
+        "S20"
+      ],
+      "category": "compliance",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "privy"
+    },
+    {
+      "id": "t-tzsend",
+      "date": "2026-10-12",
+      "category": "campaigns",
+      "owner": "Maya",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "recommended",
+      "text": "Turn on timezone-based sending for pre-sale emails",
+      "detail": "Teasers and regular emails then go out at each subscriber's local time. Sale-day sends go out on your store's clock, so shoppers everywhere hear the sale is live at the same moment."
+    },
+    {
+      "id": "t-vip",
+      "date": "2026-10-16",
+      "owner": "Maya",
+      "text": "Build the VIP segment: 3+ orders or $240+ lifetime spend",
+      "detail": "1,180 contacts today. Early-access signups get the same early access.",
+      "ref": [
+        "S01",
+        "S02"
+      ],
+      "category": "segments",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "shopify"
+    },
+    {
+      "id": "t-eaflow",
+      "date": "2026-10-16",
+      "owner": "Maya",
+      "text": "Build the early-access signup confirmation flow",
+      "ref": "F03",
+      "category": "flows",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "detail": "One email confirming they're on the list. The early-access link goes out as a campaign in your send calendar on the day early access opens, not from this flow."
+    },
+    {
+      "id": "t-segs",
+      "date": "2026-10-23",
+      "owner": "Maya",
+      "text": "Build lapsed and last-BFCM-buyer segments",
+      "detail": "Lapsed: last order 90 to 365 days ago (6,310). Last BFCM buyers: first order Nov 27 to Dec 5, 2025 (3,410).",
+      "ref": [
+        "S11",
+        "S03"
+      ],
+      "category": "segments",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "shopify"
+    },
+    {
+      "id": "t-calendar",
+      "date": "2026-10-30",
+      "owner": "Maya",
+      "text": "Write the sale emails and SMS",
+      "ref": "R25",
+      "category": "campaigns",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "detail": ""
+    },
+    {
+      "id": "t-schedule",
+      "date": "2026-11-08",
+      "category": "campaigns",
+      "owner": "Maya",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Schedule every sale send and preview each one",
+      "detail": "Check links, the offer wording, and each send's audience before scheduling. Pick exact times a few minutes off the hour, like 9:07, to avoid the queue at the top of the hour."
+    },
+    {
+      "id": "t-discount",
+      "date": "2026-11-12",
+      "category": "offer",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Set up the sale discount in Shopify, scheduled with the sale",
+      "detail": "Schedule it to start Nov 26 and end Dec 4. Build in the exclusions from your offer terms, then check it once it's scheduled."
+    },
+    {
+      "id": "t-nurture",
+      "date": "2026-11-13",
+      "owner": "Maya",
+      "text": "Build the new-buyer welcome series, set to go live Dec 5",
+      "detail": "First message after delivery: how to get the most from their candles. Second-purchase offer in January.",
+      "ref": "F12",
+      "category": "flows",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "shopify"
+    },
+    {
+      "id": "t-landing",
+      "date": "2026-11-13",
+      "owner": "Devin",
+      "text": "Build the sale page that explains the tiers and your delivery-by dates",
+      "ref": "R38",
+      "category": "site",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "merchant"
+    },
+    {
+      "id": "t-pause",
+      "date": "2026-11-20",
+      "owner": "Maya",
+      "text": "Pause win-back and the birthday flow, and stretch review requests to 21 days",
+      "ref": [
+        "F14",
+        "F10",
+        "F15"
+      ],
+      "category": "flows",
+      "status": "update",
+      "priority": "P2",
+      "evidence": "privy",
+      "detail": "Pause from Nov 24 to Dec 4 so BDAY20 can't stack with the sale. Restart both Dec 5."
+    },
+    {
+      "id": "t-stock",
+      "date": "2026-11-20",
+      "owner": "Devin",
+      "text": "Set Fireside Tobacco as the fallback if Cedar and Smoke runs low",
+      "ref": "R36",
+      "category": "site",
+      "status": "update",
+      "priority": "P2",
+      "evidence": "shopify"
+    },
+    {
+      "id": "t-boughttoday",
+      "date": "2026-11-22",
+      "category": "segments",
+      "owner": "You",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "recommended",
+      "text": "Build a \"Bought today\" segment for the evening emails on Black Friday and Cyber Monday",
+      "detail": "People who ordered in the last 24 hours. They skip the evening email on those days, after buying from the morning one."
+    },
+    {
+      "id": "t-display-sale",
+      "date": "2026-11-23",
+      "category": "displays",
+      "owner": "Maya",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Schedule a sale popup and announcement bar to run for the whole sale",
+      "detail": "Show the offer and the end date. Set it to go live Nov 26 and switch back Dec 5."
+    },
+    {
+      "id": "t-precheck",
+      "date": "2026-11-23",
+      "category": "site",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Check the sale is set up correctly the day before launch",
+      "detail": "Confirm the discount is scheduled with the right dates and exclusions, and popups and flows are set to switch on. Test each tier, a bundle, and an excluded item with a hidden code that has the same settings."
+    },
+    {
+      "id": "t-ea",
+      "date": "2026-11-24",
+      "owner": "Maya",
+      "text": "Open early access: SMS first, then email",
+      "ref": "R24",
+      "category": "campaigns",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended"
+    },
+    {
+      "id": "t-golive",
+      "date": "2026-11-24",
+      "category": "site",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Confirm sale prices are showing before the first send",
+      "detail": "A quick look: sale prices on a few products and the exclusions holding. The full check happened yesterday."
+    },
+    {
+      "category": "flows",
+      "owner": "Maya",
+      "priority": "P1",
+      "evidence": "privy",
+      "id": "t-cart-sale",
+      "date": "2026-11-24",
+      "status": "missing",
+      "text": "Pause the COMEBACK15 code in the cart flow while sale pricing is live",
+      "detail": "Pause it before early access opens so it can't stack on the sale. Restart it as soon as the sale ends."
+    },
+    {
+      "id": "t-launch",
+      "date": "2026-11-26",
+      "owner": "Maya",
+      "text": "Launch: SMS first, then email",
+      "ref": "R25",
+      "category": "campaigns",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended"
+    },
+    {
+      "id": "t-watch1",
+      "date": "2026-11-26",
+      "category": "compliance",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Check complaints, bounces, unsubscribes, and SMS opt-outs after launch day's sends",
+      "detail": "Spam complaints above 0.1%: stop sends to anyone not engaged in 30 days. Under 50 units of Cedar and Smoke: swap in Fireside Tobacco."
+    },
+    {
+      "id": "t-watch2",
+      "date": "2026-11-27",
+      "category": "compliance",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Check complaints, bounces, unsubscribes, and SMS opt-outs after Black Friday's sends",
+      "detail": "Spam complaints above 0.1%: stop sends to anyone not engaged in 30 days. Under 50 units of Cedar and Smoke: swap in Fireside Tobacco."
+    },
+    {
+      "id": "t-watch3",
+      "date": "2026-11-30",
+      "category": "compliance",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Check complaints, bounces, unsubscribes, and SMS opt-outs after Cyber Monday's sends",
+      "detail": "Spam complaints above 0.1%: stop sends to anyone not engaged in 30 days. Under 50 units of Cedar and Smoke: swap in Fireside Tobacco."
+    },
+    {
+      "id": "t-extsend",
+      "date": "2026-12-01",
+      "owner": "Maya",
+      "text": "Send the extension email: the sale runs through Friday",
+      "ref": "R28",
+      "category": "campaigns",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended"
+    },
+    {
+      "id": "t-watch-final",
+      "date": "2026-12-04",
+      "category": "compliance",
+      "owner": "Devin",
+      "status": "missing",
+      "priority": "P1",
+      "evidence": "recommended",
+      "text": "Check complaints, bounces, unsubscribes, and SMS opt-outs after the final day's sends",
+      "detail": "If spam complaints pass 0.1% on a send, send the rest only to your most engaged contacts."
+    },
+    {
+      "id": "t-undo",
+      "date": "2026-12-05",
+      "owner": "Maya",
+      "text": "Undo every sale change",
+      "detail": "Turn COMEBACK15 back on in the cart flow, restart win-back, restore the welcome display's offer, and set review requests back to their usual delay. Switch the sale popup and announcement bar back to your usual signup offer. Turn on the new-buyer welcome series.",
+      "ref": [
+        "R46",
+        "R47",
+        "F12",
+        "R34"
+      ],
+      "category": "reporting",
+      "status": "missing",
+      "priority": "P2",
+      "evidence": "recommended"
+    },
+    {
+      "id": "t-recap",
+      "date": "2026-12-05",
+      "owner": "Maya",
+      "text": "Book the recap for Dec 16, once returns settle",
+      "ref": "R48",
+      "category": "reporting",
+      "status": "missing",
+      "priority": "P3",
+      "evidence": "recommended"
+    }
+  ],
+  "sends": {
+    "title": "11 emails and 5 SMS",
+    "lede": "SMS go out first when timing matters, like launch morning. The emails carry the details.",
+    "rows": [
+      {
+        "date": "2026-11-18",
+        "time": "10:07",
+        "channel": "email",
+        "campaign": "Teaser",
+        "audience": "Engaged 90 days",
+        "suppress": "S20",
+        "subject": "Our biggest sale starts Nov 26. VIPs shop first.",
+        "message": "Tiers explained, early-access signup link"
+      },
+      {
+        "date": "2026-11-23",
+        "time": "10:07",
+        "channel": "email",
+        "campaign": "Last BFCM buyers",
+        "audience": "S03",
+        "suppress": "S20",
+        "subject": "You found us last Black Friday",
+        "message": "What's new since then, and early access if you join the list"
+      },
+      {
+        "date": "2026-11-24",
+        "time": "09:07",
+        "channel": "sms",
+        "campaign": "VIP early access",
+        "audience": "VIPs and early-access signups, S01",
+        "message": "Fernwood: your early access is open. Spend $75 save 20%, $125 save 25% + a free tin. Shop: [link].",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-24",
+        "time": "09:37",
+        "channel": "email",
+        "campaign": "VIP early access",
+        "audience": "VIPs and early-access signups, S01",
+        "subject": "You're in. Shop two days before everyone.",
+        "message": "Private link, tiers, bestsellers",
+        "suppress": "S20",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-26",
+        "time": "09:07",
+        "channel": "sms",
+        "campaign": "Launch",
+        "audience": "All SMS subscribers",
+        "message": "Fernwood: the sale is live. Spend more, save more through Dec 4. Shop: [link].",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-26",
+        "time": "09:15",
+        "channel": "email",
+        "campaign": "Launch",
+        "audience": "Engaged 180 days",
+        "suppress": "S20, S19",
+        "subject": "The sale is live: save up to 25%",
+        "message": "Tiers, gift picks, free tin at $125",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-27",
+        "time": "06:07",
+        "channel": "email",
+        "campaign": "Black Friday",
+        "audience": "All email subscribers",
+        "subject": "Black Friday at Fernwood: the free tin starts at $125",
+        "message": "Bundles that reach the top tier",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-27",
+        "time": "11:07",
+        "channel": "sms",
+        "campaign": "Black Friday",
+        "audience": "SMS subscribers, non-purchasers",
+        "message": "Fernwood: it's Black Friday. Save up to 25% plus a free tin at $125. Shop: [link].",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-27",
+        "time": "18:07",
+        "channel": "email",
+        "campaign": "Lapsed customers",
+        "audience": "All email subscribers",
+        "suppress": "Bought today",
+        "subject": "It's been a while: the tiers are on",
+        "message": "What's new, and how the tiers work",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-28",
+        "time": "10:07",
+        "channel": "email",
+        "campaign": "Mid-sale",
+        "audience": "Engaged 90 days, non-purchasers",
+        "suppress": "S20",
+        "subject": "What everyone's lighting this week",
+        "message": "Top 6 scents with reviews",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-30",
+        "time": "09:07",
+        "channel": "email",
+        "campaign": "Cyber Monday",
+        "audience": "All email subscribers",
+        "subject": "Cyber Monday at Fernwood: the tin is still free at $125",
+        "message": "Candle bundles that reach the top tier",
+        "store_time": true
+      },
+      {
+        "date": "2026-11-30",
+        "time": "12:07",
+        "channel": "sms",
+        "campaign": "Cyber Monday",
+        "audience": "SMS subscribers, non-purchasers",
+        "message": "Fernwood: it's Cyber Monday. Save up to 25% plus a free tin at $125. Shop: [link].",
+        "store_time": true
+      },
+      {
+        "date": "2026-12-01",
+        "time": "10:07",
+        "channel": "email",
+        "campaign": "Extension",
+        "audience": "Engaged 60 days, non-purchasers",
+        "suppress": "S20",
+        "subject": "We're keeping the sale going through Friday",
+        "message": "Same tiers, ends Fri, Dec 4 at 11:59pm",
+        "store_time": true
+      },
+      {
+        "date": "2026-12-03",
+        "time": "10:07",
+        "channel": "email",
+        "campaign": "Mid-extension",
+        "audience": "Engaged 30 days, non-purchasers",
+        "suppress": "S20",
+        "subject": "Stock up on candles while the tiers run through Friday",
+        "message": "Three-candle bundles that reach the top tier",
+        "store_time": true
+      },
+      {
+        "date": "2026-12-04",
+        "time": "13:07",
+        "channel": "email",
+        "campaign": "Last chance",
+        "audience": "Engaged 60 days, non-purchasers",
+        "suppress": "S20",
+        "subject": "Last chance: the sale ends tonight at 11:59pm",
+        "message": "Final reminder of tiers and the free tin",
+        "deadline_ref": "2026-12-04T23:59",
+        "store_time": true
+      },
+      {
+        "date": "2026-12-04",
+        "time": "16:07",
+        "channel": "sms",
+        "campaign": "Last chance",
+        "audience": "SMS subscribers, non-purchasers",
+        "message": "Fernwood: last chance, the sale ends tonight at 11:59pm. Shop: [link].",
+        "deadline_ref": "2026-12-04T23:59",
+        "store_time": true
+      }
+    ]
+  },
+  "scope": {
+    "segments": {
+      "included": [
+        {
+          "id": "S01",
+          "name": "VIPs"
+        },
+        {
+          "id": "S02",
+          "name": "BFCM early access"
+        },
+        {
+          "id": "S05",
+          "name": "Engaged non-buyers"
+        },
+        {
+          "id": "S11",
+          "name": "Lapsed 90 to 365 days"
+        },
+        {
+          "id": "S03",
+          "name": "Last BFCM new customers"
+        },
+        {
+          "id": "S19",
+          "name": "Recent buyers 7 days"
+        },
+        {
+          "id": "S20",
+          "name": "Unengaged 90 days"
+        }
+      ],
+      "skipped": [
+        {
+          "id": "S07",
+          "name": "Spend and frequency matrix (S07 to S10)",
+          "reason": "they'd get the same sends as VIPs and lapsed customers"
+        },
+        {
+          "id": "S15",
+          "name": "Active subscribers",
+          "reason": "no subscription program"
+        }
+      ]
+    },
+    "flows": {
+      "included": [
+        {
+          "id": "F05",
+          "name": "Abandoned cart"
+        },
+        {
+          "id": "F01",
+          "name": "Welcome (email)"
+        },
+        {
+          "id": "F02",
+          "name": "Welcome (SMS)"
+        },
+        {
+          "id": "F03",
+          "name": "BFCM early access signup"
+        },
+        {
+          "id": "F12",
+          "name": "Post-BFCM new customer nurture"
+        },
+        {
+          "id": "F14",
+          "name": "Win-back"
+        },
+        {
+          "id": "F10",
+          "name": "Review request"
+        },
+        {
+          "id": "F15",
+          "name": "Birthday"
+        }
+      ],
+      "skipped": [
+        {
+          "id": "F11",
+          "name": "Replenishment",
+          "reason": "reorder timing varies too much to trigger well"
+        },
+        {
+          "id": "F13",
+          "name": "VIP tier entry",
+          "reason": "no loyalty program"
+        }
+      ]
+    }
+  },
+  "closing": {
+    "title": "Next check-in: Oct 13, when your flows should be live",
+    "lede": "Your Privy CSM can walk through the cart flow, the displays, and the send calendar in one 30-minute session.",
+    "cta": {
+      "label": "Book a session with your Privy CSM",
+      "url": "https://www.privy.com/"
+    },
+    "date": "2026-10-13"
+  },
+  "already_set": [
+    {
+      "category": "compliance",
+      "name": "SPF and DKIM passing"
+    },
+    {
+      "category": "compliance",
+      "name": "One-click unsubscribe"
+    },
+    {
+      "category": "compliance",
+      "name": "SMS consent records"
+    },
+    {
+      "category": "segments",
+      "name": "Engaged non-buyers",
+      "ref": "S05"
+    },
+    {
+      "category": "segments",
+      "name": "Recent buyers 7 days",
+      "ref": "S19"
+    },
+    {
+      "category": "segments",
+      "name": "Unengaged 90 days",
+      "ref": "S20"
+    }
+  ],
+  "today": {
+    "as_of": "2026-09-29",
+    "stats": [
+      {
+        "label": "Total mailable contacts",
+        "value": "48,200",
+        "source": "Privy",
+        "basis": "count",
+        "text": "Total mailable contacts"
+      },
+      {
+        "label": "Total textable contacts",
+        "value": "9,800",
+        "source": "Privy",
+        "basis": "count",
+        "text": "Total textable contacts"
+      },
+      {
+        "label": "Welcome display signup rate",
+        "value": "3.1%",
+        "caption": "New visitors, last 90 days",
+        "source": "Privy",
+        "basis": "rate",
+        "text": "of welcome popup views lead to a signup"
+      },
+      {
+        "label": "Flows running",
+        "value": "6",
+        "caption": "5 need BFCM changes",
+        "source": "Privy",
+        "basis": "count",
+        "text": "flows running, and 5 need BFCM changes"
+      }
+    ]
+  },
+  "goals": {
+    "merchant_goal": "Beat last year's $468K",
+    "items": [
+      {
+        "goal": "4,000 early-access signups",
+        "by": "2026-11-20",
+        "check": "Privy display report"
+      },
+      {
+        "goal": "Every task due before the first BFCM send is done",
+        "by": "2026-11-17",
+        "check": "This plan"
+      },
+      {
+        "goal": "Spam complaints under 0.1% on every send",
+        "by": "2026-12-04",
+        "check": "Google Postmaster Tools, daily"
+      }
+    ]
+  },
+  "basis": {
+    "data": [
+      "Shopify orders, Nov 20, 2025 to Sep 29, 2026, by order date",
+      "Privy contacts, displays, flows, and campaigns as of Sep 29, 2026; campaign revenue credited to send date",
+      "Your answers in the planning interview on Sep 29, 2026"
+    ],
+    "assumptions": [
+      "68% gross margin and $9 fulfillment cost, as you shared",
+      "Cedar and Smoke sells at about last year's pace"
+    ]
+  },
+  "remix": [
+    "What should the VIP early-access email lead with?",
+    "Which products should the Thanksgiving launch SMS feature?",
+    "Show me the tiers as a simple table for my team."
+  ]
+}

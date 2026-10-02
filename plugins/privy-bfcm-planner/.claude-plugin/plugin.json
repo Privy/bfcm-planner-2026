@@ -1,0 +1,21 @@
+{
+  "name": "privy-bfcm-planner",
+  "version": "1.2.0",
+  "description": "Privy BFCM Planner: builds your Black Friday and Cyber Monday plan from your Privy and Shopify data and a short interview, as a shareable page with tasks, a calendar, and your send calendar.",
+  "author": {
+    "name": "Privy",
+    "url": "https://www.privy.com"
+  },
+  "keywords": [
+    "bfcm",
+    "black friday",
+    "cyber monday",
+    "shopify",
+    "privy",
+    "email",
+    "sms",
+    "popups"
+  ],
+  "homepage": "https://www.privy.com/bfcm",
+  "license": "SEE LICENSE IN LICENSE"
+}

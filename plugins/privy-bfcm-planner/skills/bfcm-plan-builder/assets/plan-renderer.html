@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BFCM 2026 plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  PRIVY BFCM PLAN RENDERER v4 (locked). Do not edit per merchant.
+  Content comes only from plan-data.json via scripts/build_plan.py.
+  Base CSS is copied verbatim from assets/privy-DESIGN.md; page CSS lives in the privy-x-* block.
+-->
+<style>
+:root {
+  color-scheme: light dark;
+  /* Brand */
+  --privy-spruce-950: #062B37; --privy-spruce-900: #254E5A; --privy-spruce-800: #2D5A5F;
+  --privy-spruce-700: #3B706F; --privy-spruce-600: #4A8584;
+  --privy-mint-200: #BDF1D8; --privy-mint-50: #F3FCF5;
+  --privy-lemon-300: #E3E32B; --privy-lemon-200: #ECEF8E; --privy-lemon-100: #F7FAC2; /* text only, never fills */
+  /* Semantic (light) */
+  --privy-canvas: #FAFAFA; --privy-surface: #FFFFFF; --privy-surface-2: #F5F5F5;
+  --privy-band: var(--privy-spruce-950); --privy-band-text: var(--privy-mint-50); --privy-band-accent: var(--privy-lemon-300);
+  --privy-text: #0A0A0A; --privy-text-strong: #171717; --privy-text-2: #525252; --privy-text-3: #737373;
+  --privy-border: #E5E5E5; --privy-border-strong: #D4D4D4; --privy-ring: rgb(0 0 0 / 0.06);
+  --privy-accent: var(--privy-spruce-700); --privy-focus: var(--privy-spruce-700);
+  --privy-primary-bg: var(--privy-spruce-950); --privy-primary-fg: var(--privy-lemon-300); --privy-primary-hover: var(--privy-spruce-900);
+  --privy-highlight-bg: var(--privy-mint-50); --privy-highlight-fg: var(--privy-spruce-950);
+  --privy-success: #15803D; --privy-success-bg: #F0FDF4;
+  --privy-warning: #A16207; --privy-warning-bg: #FEFCE8;
+  --privy-error: #B91C1C;   --privy-error-bg: #FEF2F2;
+  --privy-chart-1: #254E5A; --privy-chart-2: #4A8584; --privy-chart-3: #83D2B3; --privy-chart-4: #BDF1D8; --privy-chart-5: #737373;
+  /* Type */
+  --privy-font-display: "ABC Camera Plain", "cameraPlain", "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --privy-font-body: "Matter", "displayMatter", "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --privy-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --privy-type-display: clamp(3rem, 6vw, 4.5rem);
+  --privy-type-title: clamp(2rem, 4vw, 3rem);
+  --privy-type-heading-l: clamp(1.5rem, 2.5vw, 1.875rem);
+  --privy-type-heading-m: clamp(1.25rem, 2vw, 1.5rem);
+  --privy-type-heading-s: 1.125rem;
+  --privy-type-lede: clamp(1.125rem, 1.5vw, 1.25rem);
+  --privy-type-body: 1rem; --privy-type-compact: 0.875rem; --privy-type-label: 0.875rem; --privy-type-caption: 0.8125rem;
+  --privy-type-stat: clamp(2.25rem, 4vw, 3.5rem);
+  /* Space, shape, depth, motion */
+  --privy-space-1: 4px; --privy-space-2: 8px; --privy-space-3: 12px; --privy-space-4: 16px; --privy-space-5: 20px;
+  --privy-space-6: 24px; --privy-space-8: 32px; --privy-space-10: 40px; --privy-space-12: 48px; --privy-space-16: 64px;
+  --privy-space-20: 80px; --privy-space-24: 96px; --privy-space-32: 128px;
+  --privy-radius-xs: 6px; --privy-radius-sm: 10px; --privy-radius-md: 16px; --privy-radius-lg: 24px; --privy-radius-pill: 9999px;
+  --privy-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06), 0 0 0 1px rgb(0 0 0 / 0.06);
+  --privy-shadow-md: 0 8px 24px -8px rgb(6 43 55 / 0.18), 0 0 0 1px rgb(0 0 0 / 0.06);
+  --privy-ease: cubic-bezier(0.2, 0, 0, 1);
+  --privy-content: 1200px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --privy-canvas: #0C1C22; --privy-surface: #122A31; --privy-surface-2: #17323A;
+    --privy-band: #062B37;
+    --privy-text: #F3FCF5; --privy-text-strong: #FFFFFF; --privy-text-2: #A3BCC0; --privy-text-3: #7F9CA2;
+    --privy-border: rgb(243 252 245 / 0.12); --privy-border-strong: rgb(243 252 245 / 0.2); --privy-ring: rgb(243 252 245 / 0.12);
+    --privy-accent: var(--privy-mint-200); --privy-focus: var(--privy-mint-200);
+    --privy-primary-bg: var(--privy-spruce-900); --privy-primary-fg: var(--privy-lemon-300); --privy-primary-hover: var(--privy-spruce-800);
+    --privy-highlight-bg: rgb(189 241 216 / 0.07); --privy-highlight-fg: var(--privy-text);
+    --privy-success: #4ADE80; --privy-success-bg: rgb(74 222 128 / 0.1);
+    --privy-warning: #FACC15; --privy-warning-bg: rgb(250 204 21 / 0.1);
+    --privy-error: #F87171;   --privy-error-bg: rgb(248 113 113 / 0.1);
+    --privy-chart-1: #BDF1D8; --privy-chart-2: #6AAF9A; --privy-chart-3: #4A8584; --privy-chart-4: #DEF7E9; --privy-chart-5: #737373;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --privy-canvas: #0C1C22; --privy-surface: #122A31; --privy-surface-2: #17323A;
+  --privy-band: #062B37;
+  --privy-text: #F3FCF5; --privy-text-strong: #FFFFFF; --privy-text-2: #A3BCC0; --privy-text-3: #7F9CA2;
+  --privy-border: rgb(243 252 245 / 0.12); --privy-border-strong: rgb(243 252 245 / 0.2); --privy-ring: rgb(243 252 245 / 0.12);
+  --privy-accent: var(--privy-mint-200); --privy-focus: var(--privy-mint-200);
+  --privy-primary-bg: var(--privy-spruce-900); --privy-primary-fg: var(--privy-lemon-300); --privy-primary-hover: var(--privy-spruce-800);
+  --privy-highlight-bg: rgb(189 241 216 / 0.07); --privy-highlight-fg: var(--privy-text);
+  --privy-success: #4ADE80; --privy-success-bg: rgb(74 222 128 / 0.1);
+  --privy-warning: #FACC15; --privy-warning-bg: rgb(250 204 21 / 0.1);
+  --privy-error: #F87171;   --privy-error-bg: rgb(248 113 113 / 0.1);
+  --privy-chart-1: #BDF1D8; --privy-chart-2: #6AAF9A; --privy-chart-3: #4A8584; --privy-chart-4: #DEF7E9; --privy-chart-5: #737373;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--privy-canvas); color: var(--privy-text);
+  font: 400 var(--privy-type-body)/1.6 var(--privy-font-body);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
+}
+:focus-visible { outline: 2px solid var(--privy-focus); outline-offset: 2px; border-radius: 4px; }
+::selection { background: var(--privy-mint-200); color: var(--privy-spruce-950); }
+
+/* Shell */
+.privy-shell { max-width: var(--privy-content); margin-inline: auto; padding-inline: clamp(16px, 4vw, 40px); overflow-wrap: break-word; }
+.privy-skip { position: absolute; left: -9999px; } .privy-skip:focus { left: 16px; top: 16px; }
+.privy-header { display: flex; align-items: center; justify-content: space-between; gap: var(--privy-space-4); padding-block: var(--privy-space-6) var(--privy-space-12); }
+.privy-wordmark { height: 22px; width: auto; color: var(--privy-spruce-950); display: block; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .privy-wordmark { color: var(--privy-lemon-300); } }
+:root[data-theme="dark"] .privy-wordmark { color: var(--privy-lemon-300); }
+.privy-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--privy-space-1) var(--privy-space-6); font-size: var(--privy-type-caption); color: var(--privy-text-2); }
+.privy-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--privy-space-4); padding-block: var(--privy-space-16) var(--privy-space-10); font-size: var(--privy-type-caption); color: var(--privy-text-2); }
+.privy-footer .privy-wordmark { height: 16px; color: var(--privy-text-2); }
+
+/* Type roles */
+.privy-display, .privy-title, .privy-heading-l, .privy-heading-m, .privy-stat-value {
+  font-family: var(--privy-font-display); font-weight: 500; color: var(--privy-text-strong); margin: 0; text-wrap: balance;
+}
+.privy-display { font-size: var(--privy-type-display); line-height: 1; letter-spacing: -0.035em; }
+.privy-title { font-size: var(--privy-type-title); line-height: 1.05; letter-spacing: -0.025em; }
+.privy-heading-l { font-size: var(--privy-type-heading-l); line-height: 1.2; letter-spacing: -0.015em; }
+.privy-heading-m { font-size: var(--privy-type-heading-m); line-height: 1.25; letter-spacing: -0.01em; }
+.privy-heading-s { font: 600 var(--privy-type-heading-s)/1.35 var(--privy-font-body); letter-spacing: -0.005em; color: var(--privy-text-strong); margin: 0; }
+.privy-lede { font-size: var(--privy-type-lede); line-height: 1.5; color: var(--privy-text-2); max-width: 38rem; margin: 0; text-wrap: pretty; }
+.privy-prose { max-width: 38rem; } .privy-prose > * { margin: 0; } .privy-prose > * + * { margin-top: var(--privy-space-4); } .privy-prose p { text-wrap: pretty; }
+.privy-label { font-size: var(--privy-type-label); font-weight: 500; line-height: 1.3; color: var(--privy-text-2); margin: 0; }
+.privy-caption { font-size: var(--privy-type-caption); line-height: 1.45; color: var(--privy-text-2); margin: 0; }
+.privy-mono { font-family: var(--privy-font-mono); font-size: 0.9em; }
+.privy-num { font-variant-numeric: tabular-nums; }
+a { color: var(--privy-accent); text-underline-position: from-font; text-underline-offset: 3px; text-decoration-thickness: from-font; text-decoration-skip-ink: auto; }
+
+/* Layout */
+.privy-section { padding-block: var(--privy-space-20); }
+.privy-section + .privy-section { padding-top: 0; }
+.privy-section > * + * { margin-top: var(--privy-space-8); }
+.privy-stack { display: grid; gap: var(--privy-space-4); align-content: start; } .privy-stack > * { margin: 0; }
+.privy-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--privy-space-6); }
+.privy-grid > * { min-width: 0; grid-column: span 12; }
+@media (min-width: 900px) {
+  .privy-span-4 { grid-column: span 4; } .privy-span-5 { grid-column: span 5; } .privy-span-6 { grid-column: span 6; }
+  .privy-span-7 { grid-column: span 7; } .privy-span-8 { grid-column: span 8; }
+}
+
+/* Surfaces */
+.privy-card { background: var(--privy-surface); border-radius: var(--privy-radius-md); box-shadow: 0 0 0 1px var(--privy-ring); padding: var(--privy-space-6); }
+.privy-band { background: var(--privy-band); color: var(--privy-band-text); border-radius: var(--privy-radius-lg); padding: clamp(32px, 6vw, 72px); box-shadow: 0 0 0 1px var(--privy-ring); }
+.privy-band :is(.privy-display, .privy-title, .privy-heading-l, .privy-stat-value) { color: var(--privy-band-accent); }
+.privy-band :is(.privy-lede, .privy-label, .privy-caption) { color: rgb(243 252 245 / 0.78); }
+.privy-band .privy-button:not([data-variant]) { background: var(--privy-mint-50); color: var(--privy-spruce-950); }
+.privy-band .privy-button:not([data-variant]):hover { background: #FFFFFF; }
+.privy-callout { background: var(--privy-highlight-bg); color: var(--privy-highlight-fg); border-radius: var(--privy-radius-md); padding: var(--privy-space-5) var(--privy-space-6); }
+
+/* Buttons */
+.privy-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--privy-space-2);
+  height: 40px; padding-inline: var(--privy-space-4); border-radius: var(--privy-radius-pill); border: 0;
+  font: 500 var(--privy-type-label)/1 var(--privy-font-body); text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color 150ms var(--privy-ease), transform 150ms var(--privy-ease), box-shadow 150ms var(--privy-ease);
+  background: var(--privy-primary-bg); color: var(--privy-primary-fg); box-shadow: var(--privy-shadow-sm);
+}
+.privy-button:hover { background: var(--privy-primary-hover); }
+.privy-button:active { transform: scale(0.98); }
+.privy-button[data-variant="outline"] { background: var(--privy-surface); color: var(--privy-text-strong); }
+.privy-button[data-variant="outline"]:hover { background: var(--privy-surface-2); }
+.privy-button[data-variant="ghost"] { background: transparent; color: var(--privy-text-strong); box-shadow: none; }
+.privy-button[data-variant="ghost"]:hover { background: var(--privy-surface-2); }
+.privy-button[data-size="lg"] { height: 52px; padding-inline: var(--privy-space-6); font-size: 1rem; }
+
+/* Badges and tabs */
+.privy-badge { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--privy-radius-pill); padding: 2px 10px; font: 500 0.75rem/1.5 var(--privy-font-body); background: var(--privy-surface-2); color: var(--privy-text-strong); }
+.privy-badge[data-tone="brand"] { background: var(--privy-spruce-900); color: var(--privy-lemon-200); }
+.privy-badge[data-tone="highlight"] { background: var(--privy-highlight-bg); color: var(--privy-accent); }
+.privy-badge[data-tone="success"] { background: var(--privy-success-bg); color: var(--privy-success); }
+.privy-badge[data-tone="warning"] { background: var(--privy-warning-bg); color: var(--privy-warning); }
+.privy-badge[data-tone="error"] { background: var(--privy-error-bg); color: var(--privy-error); }
+.privy-tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: var(--privy-radius-pill); background: var(--privy-surface); box-shadow: 0 0 0 1px var(--privy-ring); }
+.privy-tabs button { height: 36px; padding-inline: var(--privy-space-4); border: 0; border-radius: var(--privy-radius-pill); background: transparent; color: var(--privy-text-strong); font: 500 var(--privy-type-label)/1 var(--privy-font-body); cursor: pointer; transition: background-color 200ms var(--privy-ease), color 200ms var(--privy-ease); }
+.privy-tabs button[aria-selected="true"] { background: var(--privy-primary-bg); color: var(--privy-primary-fg); }
+
+/* Stats */
+.privy-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--privy-space-8); }
+.privy-stat { display: grid; gap: var(--privy-space-2); align-content: start; }
+.privy-stat > * { margin: 0; }
+.privy-stat-value { font-size: var(--privy-type-stat); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+
+/* Tables */
+.privy-table-wrap { overflow-x: auto; background: var(--privy-surface); border-radius: var(--privy-radius-md); box-shadow: 0 0 0 1px var(--privy-ring); }
+.privy-table { width: 100%; min-width: 36rem; border-collapse: collapse; font-size: var(--privy-type-compact); }
+.privy-table caption { text-align: left; padding: var(--privy-space-5) var(--privy-space-6) var(--privy-space-2); font-size: var(--privy-type-caption); color: var(--privy-text-2); }
+.privy-table th, .privy-table td { padding: var(--privy-space-3) var(--privy-space-6); text-align: left; vertical-align: baseline; border-bottom: 1px solid var(--privy-border); }
+.privy-table thead th { font-weight: 500; color: var(--privy-text-2); vertical-align: bottom; }
+.privy-table tbody tr:last-child > * { border-bottom: 0; }
+.privy-table .privy-num, .privy-table [data-align="numeric"] { text-align: right; font-variant-numeric: tabular-nums; }
+.privy-table tr[data-highlight] > * { background: var(--privy-highlight-bg); color: var(--privy-highlight-fg); }
+
+/* Forms */
+.privy-field { display: grid; gap: var(--privy-space-2); }
+.privy-input { height: 40px; padding-inline: 12px; border-radius: var(--privy-radius-sm); border: 1px solid var(--privy-border); background: var(--privy-surface); color: var(--privy-text); font: 400 var(--privy-type-body)/1 var(--privy-font-body); transition: border-color 150ms var(--privy-ease), box-shadow 150ms var(--privy-ease); }
+.privy-input:hover { border-color: var(--privy-border-strong); }
+.privy-input:focus { outline: none; border-color: var(--privy-focus); box-shadow: 0 0 0 3px rgb(59 112 111 / 0.2); }
+
+/* Charts */
+.privy-chart { margin: 0; display: grid; gap: var(--privy-space-3); }
+.privy-chart svg { width: 100%; height: auto; overflow: visible; }
+.privy-chart svg text { fill: var(--privy-text-2); font: 400 12px var(--privy-font-body); }
+.privy-chart .privy-gridline { stroke: var(--privy-border); stroke-width: 1; }
+
+@media print {
+  .privy-skip { display: none; }
+  .privy-band, .privy-badge, .privy-callout, .privy-chart svg { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .privy-table-wrap { overflow: visible; }
+  .privy-table { min-width: 0; }
+  li, tr, .privy-chart { break-inside: avoid; }
+  h1, h2, h3, h4 { break-after: avoid; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; } }
+/* ---- Page-specific layout (privy-x-*), tokens only ---- */
+body.privy-x-page { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.privy-x-nowrap { white-space: nowrap; }
+.privy-x-band-foot .privy-button { white-space: normal; text-align: center; max-width: 100%; height: auto; min-height: 44px; line-height: 1.3; padding-block: 10px; }
+.privy-x-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.privy-x-head { display: grid; gap: var(--privy-space-3); max-width: 44rem; }
+.privy-x-head > * { margin: 0; }
+
+/* Nav */
+.privy-x-nav { position: sticky; top: 0; z-index: 5; background: var(--privy-canvas); border-bottom: 1px solid var(--privy-border); padding-top: env(safe-area-inset-top, 0px); }
+.privy-x-nav-in { display: flex; align-items: center; gap: var(--privy-space-2); max-width: var(--privy-content); margin: 0 auto; padding-inline-end: clamp(12px, 3vw, 32px); }
+.privy-x-nav-in ul { flex: 1 1 auto; min-width: 0; }
+.privy-x-theme { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 0; border-radius: var(--privy-radius-pill); background: transparent; color: var(--privy-text-2); cursor: pointer; transition: background-color 150ms var(--privy-ease), color 150ms var(--privy-ease); }
+@media (hover: hover) { .privy-x-theme:hover { background: var(--privy-surface-2); color: var(--privy-text-strong); } }
+.privy-x-theme svg { display: block; }
+@media print { .privy-x-theme { display: none !important; } }
+.privy-x-nav ul { display: flex; gap: var(--privy-space-1); overflow-x: auto; list-style: none; margin: 0 auto; padding: var(--privy-space-2) clamp(16px, 4vw, 40px); max-width: var(--privy-content); scrollbar-width: none; }
+.privy-x-nav a { display: inline-flex; align-items: center; height: 40px; padding-inline: var(--privy-space-4); border-radius: var(--privy-radius-pill); color: var(--privy-text-2); text-decoration: none; font: 500 var(--privy-type-label)/1 var(--privy-font-body); white-space: nowrap; transition: background-color 150ms var(--privy-ease), color 150ms var(--privy-ease); }
+@media (hover: hover) { .privy-x-nav a:not([aria-current="true"]):hover { background: var(--privy-mint-200); color: var(--privy-spruce-950); } }
+@media (hover: hover) and (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .privy-x-nav a:not([aria-current="true"]):hover { background: rgb(189 241 216 / 0.16); color: var(--privy-mint-50); } }
+@media (hover: hover) { :root[data-theme="dark"] .privy-x-nav a:not([aria-current="true"]):hover { background: rgb(189 241 216 / 0.16); color: var(--privy-mint-50); } }
+.privy-x-nav a[aria-current="true"] { background: var(--privy-primary-bg); color: var(--privy-primary-fg); }
+.privy-x-howto { list-style: none; margin-bottom: 0; padding: 0; display: grid; gap: var(--privy-space-6); counter-reset: howto; }
+@media (min-width: 900px) { .privy-x-howto { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--privy-space-12); } }
+.privy-x-howto li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: var(--privy-space-3); counter-increment: howto; }
+.privy-x-howto li::before { content: counter(howto); font: 500 var(--privy-type-heading-m)/1.25 var(--privy-font-display); color: var(--privy-accent); }
+.privy-x-howto p { margin: 0; text-wrap: pretty; }
+.privy-x-howto strong { display: block; font-weight: 600; color: var(--privy-text-strong); margin-bottom: 2px; }
+
+/* Opening band */
+.privy-x-open { display: grid; gap: var(--privy-space-10); }
+.privy-x-open-grid { display: grid; gap: var(--privy-space-10); }
+@media (min-width: 900px) { .privy-x-open-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; } }
+.privy-x-open .privy-stats { padding-top: var(--privy-space-8); border-top: 1px solid rgb(243 252 245 / 0.14); }
+.privy-x-next { display: grid; gap: var(--privy-space-3); }
+.privy-x-next > .privy-label { color: rgb(243 252 245 / 0.78); margin: 0; }
+.privy-x-next ol { margin: 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.privy-x-next li { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: var(--privy-space-3); padding-block: var(--privy-space-3); border-top: 1px solid rgb(243 252 245 / 0.14); color: var(--privy-band-text); font-size: var(--privy-type-compact); }
+.privy-x-next li span:first-child { color: rgb(243 252 245 / 0.78); font-variant-numeric: tabular-nums; }
+.privy-x-next .privy-x-empty { color: rgb(243 252 245 / 0.78); font-size: var(--privy-type-compact); margin: 0; }
+
+/* Timeline */
+.privy-x-tl { overflow-x: auto; }
+.privy-x-tl-inner { min-width: 760px; position: relative; }
+.privy-x-tl-row { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--privy-space-6); align-items: center; padding-block: var(--privy-space-3); border-bottom: 1px solid var(--privy-border); }
+.privy-x-tl-label { display: grid; gap: 2px; }
+.privy-x-tl-label > * { margin: 0; }
+.privy-x-tl-label a { color: var(--privy-text-strong); text-decoration: none; }
+@media (hover: hover) { .privy-x-tl-label a:hover { text-decoration: underline; } }
+.privy-x-tl-track { position: relative; height: 12px; }
+.privy-x-tl-bar { position: absolute; top: 0; height: 12px; border-radius: var(--privy-radius-pill); background: var(--privy-chart-3); }
+.privy-x-tl-bar.is-key { background: var(--privy-chart-1); }
+.privy-x-tl-marks { position: absolute; top: 0; bottom: 28px; z-index: 1; left: calc(220px + var(--privy-space-6)); right: 0; pointer-events: none; }
+.privy-x-tl-mark { position: absolute; top: 0; bottom: 0; border-left: 1px dashed var(--privy-text-3); }
+.privy-x-tl-mark.is-key { border-left: 1px solid var(--privy-text-strong); }
+.privy-x-tl-mark em { position: absolute; top: 0; left: 6px; font-style: normal; font-size: var(--privy-type-caption); color: var(--privy-text-2); white-space: nowrap; }
+.privy-x-tl-axis { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: var(--privy-space-6); padding-top: var(--privy-space-2); }
+.privy-x-tl-ticks { position: relative; height: 20px; }
+.privy-x-tl-ticks span { position: absolute; transform: translateX(-50%); font-size: var(--privy-type-caption); color: var(--privy-text-2); white-space: nowrap; }
+.privy-x-tl-pad { padding-top: 26px; }
+
+/* Review: daily bars */
+.privy-x-days { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(36px, 1fr); gap: 8px; align-items: end; height: 260px; overflow-x: auto; padding-top: 28px; }
+.privy-x-day { display: grid; grid-template-rows: 1fr auto; height: 100%; gap: var(--privy-space-2); min-width: 28px; }
+.privy-x-day-track { position: relative; display: flex; align-items: flex-end; }
+.privy-x-day-bar { width: 100%; background: var(--privy-chart-5); border-radius: 4px 4px 0 0; min-height: 2px; position: relative; }
+.privy-x-day.is-key .privy-x-day-bar { background: var(--privy-chart-1); }
+.privy-x-day-val { position: absolute; bottom: 100%; left: 50%; transform: translate(-50%, -4px); font-size: var(--privy-type-caption); color: var(--privy-text-strong); font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.privy-x-day-lab { font-size: 12px; line-height: 1.25; color: var(--privy-text-2); text-align: center; white-space: nowrap; }
+.privy-x-day.is-key .privy-x-day-lab { color: var(--privy-text-strong); font-weight: 500; }
+.privy-x-review-grid { display: grid; gap: var(--privy-space-12); }
+@media (min-width: 900px) { .privy-x-review-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.privy-x-review-cols { display: grid; gap: var(--privy-space-12); align-items: start; }
+.privy-x-review-cols .privy-stats { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.privy-x-hbars { display: grid; gap: var(--privy-space-4); }
+.privy-x-hbar { display: grid; gap: var(--privy-space-1); }
+.privy-x-hbar-top { display: flex; justify-content: space-between; gap: var(--privy-space-4); font-size: var(--privy-type-compact); }
+.privy-x-hbar-top strong { font-weight: 500; font-variant-numeric: tabular-nums; }
+.privy-x-hbar-track { height: 10px; background: var(--privy-surface-2); border-radius: var(--privy-radius-pill); overflow: hidden; }
+.privy-x-hbar-fill { height: 100%; background: var(--privy-chart-1); border-radius: var(--privy-radius-pill); }
+.privy-x-findings { list-style: none; margin: 0; padding: 0; display: grid; }
+.privy-x-finding { display: grid; gap: var(--privy-space-2); padding-block: var(--privy-space-5); border-top: 1px solid var(--privy-border); }
+@media (min-width: 900px) { .privy-x-finding { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--privy-space-8); } }
+.privy-x-finding > div { display: grid; gap: var(--privy-space-1); align-content: start; }
+.privy-x-finding p { margin: 0; }
+
+/* Phases */
+.privy-x-phase { display: grid; gap: var(--privy-space-6); padding-block: var(--privy-space-12); border-top: 1px solid var(--privy-border); }
+.privy-x-phase:first-of-type { border-top: 0; }
+.privy-x-phase-head { display: grid; gap: var(--privy-space-3); max-width: 44rem; }
+.privy-x-phase-head > * { margin: 0; }
+.privy-x-phase-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--privy-space-3); }
+.privy-x-steps { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--privy-border); }
+.privy-x-step { display: grid; grid-template-columns: 24px 4.5rem minmax(0, 1fr); gap: var(--privy-space-3); align-items: baseline; padding-block: var(--privy-space-4); border-top: 1px solid var(--privy-border); }
+.privy-x-step input, .privy-x-caldone input {
+  -webkit-appearance: none; appearance: none; flex-shrink: 0; width: 20px; height: 20px; margin: 0; transform: translateY(2px);
+  border: 1.5px solid var(--privy-text-2); border-radius: 6px; background: var(--privy-surface);
+  display: inline-grid; place-content: center; cursor: pointer;
+}
+.privy-x-step input::after, .privy-x-caldone input::after {
+  content: ""; width: 10px; height: 5px; margin-top: -2px; border-left: 2px solid var(--privy-canvas); border-bottom: 2px solid var(--privy-canvas);
+  transform: rotate(-45deg) scale(0); transition: transform 0.12s ease-out;
+}
+.privy-x-step input:checked, .privy-x-caldone input:checked { background: var(--privy-accent); border-color: var(--privy-accent); }
+.privy-x-step input:checked::after, .privy-x-caldone input:checked::after { transform: rotate(-45deg) scale(1); }
+.privy-x-step input:focus-visible, .privy-x-caldone input:focus-visible { outline: 2px solid var(--privy-accent); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .privy-x-step input::after, .privy-x-caldone input::after { transition: none; } }
+:root[data-theme="light"] { color-scheme: light; }
+.privy-x-step-date { font-size: var(--privy-type-compact); color: var(--privy-text-2); font-variant-numeric: tabular-nums; }
+.privy-x-step-body { display: grid; gap: var(--privy-space-1); }
+.privy-x-step-body > * { margin: 0; }
+.privy-x-step-text { color: var(--privy-text-strong); }
+.privy-x-step.is-done .privy-x-step-text { text-decoration: line-through; color: var(--privy-text-2); }
+.privy-x-step details summary { cursor: pointer; font-size: var(--privy-type-caption); color: var(--privy-accent); list-style: none; }
+.privy-x-step details summary::-webkit-details-marker { display: none; }
+.privy-x-step details p { margin: var(--privy-space-2) 0 0; font-size: var(--privy-type-compact); color: var(--privy-text-2); max-width: 40rem; }
+@media (max-width: 600px) { .privy-x-step { grid-template-columns: 24px minmax(0, 1fr); } .privy-x-step-date { grid-column: 2; } .privy-x-step-body { grid-column: 2; } }
+
+/* Displays */
+.privy-x-stages { list-style: none; margin-bottom: 0; padding: 0; border-bottom: 1px solid var(--privy-border); }
+.privy-x-stages li { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: var(--privy-space-4); padding-block: var(--privy-space-4); border-top: 1px solid var(--privy-border); }
+.privy-x-stages li p { margin: 0; }
+.privy-x-when { font-size: var(--privy-type-compact); color: var(--privy-text-2); font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) { .privy-x-stages li { grid-template-columns: minmax(0, 1fr); gap: var(--privy-space-1); } }
+
+/* Details */
+.privy-x-details { border-top: 1px solid var(--privy-border); }
+.privy-x-details:last-of-type { border-bottom: 1px solid var(--privy-border); }
+.privy-x-details > summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--privy-space-4); min-height: 56px; font: 500 var(--privy-type-heading-s)/1.35 var(--privy-font-body); color: var(--privy-text-strong); }
+.privy-x-details > summary::-webkit-details-marker { display: none; }
+.privy-x-details > summary::after { content: "+"; font-weight: 400; color: var(--privy-text-2); }
+.privy-x-details[open] > summary::after { content: "\2212"; }
+.privy-x-details > div { display: grid; gap: var(--privy-space-4); padding-bottom: var(--privy-space-8); }
+.privy-x-list { margin: 0; padding-inline-start: var(--privy-space-5); display: grid; gap: var(--privy-space-2); }
+
+/* Interface polish */
+.privy-x-step-text, .privy-x-phase-head p, .privy-x-finding p, .privy-x-stages p, .privy-x-next li, .privy-x-head .privy-lede { text-wrap: pretty; }
+.privy-x-phase, .privy-x-step, .privy-section { scroll-margin-top: 80px; }
+.privy-x-step-body { max-width: none; }
+.privy-x-step label { cursor: pointer; }
+.privy-x-step.is-target, .privy-x-step:target { background: var(--privy-highlight-bg); box-shadow: -12px 0 0 var(--privy-highlight-bg), 12px 0 0 var(--privy-highlight-bg); }
+.privy-x-dayname { display: block; font-weight: 400; font-size: var(--privy-type-caption); color: var(--privy-text-2); }
+
+.privy-x-offer-box { display: grid; gap: var(--privy-space-2); max-width: 44rem; }
+.privy-x-offer-box > * { margin: 0; }
+.privy-x-offer { font-family: var(--privy-font-display); font-weight: 500; font-size: var(--privy-type-heading-m); line-height: 1.25; letter-spacing: -0.01em; color: var(--privy-text-strong); text-wrap: balance; }
+
+/* Closing */
+.privy-x-band-foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--privy-space-8); }
+
+/* ---- v3: compact review, tabs, task groups ---- */
+.privy-x-rv { display: grid; gap: var(--privy-space-10); }
+@media (min-width: 900px) { .privy-x-rv { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: end; } }
+.privy-x-rv .privy-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--privy-space-6); }
+.privy-x-rv .privy-x-days { height: 170px; grid-auto-columns: minmax(18px, 1fr); gap: 4px; }
+.privy-x-rv .privy-x-day { min-width: 18px; }
+.privy-x-rv .privy-stat-value { font-size: var(--privy-type-heading-l); }
+.privy-x-changes { list-style: none; margin-bottom: 0; padding: 0; border-bottom: 1px solid var(--privy-border); }
+.privy-x-changes li { display: grid; gap: var(--privy-space-1); padding-block: var(--privy-space-4); border-top: 1px solid var(--privy-border); }
+@media (min-width: 900px) { .privy-x-changes li { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--privy-space-8); } }
+.privy-x-changes p { margin: 0; text-wrap: pretty; }
+.privy-x-plan-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--privy-space-4); }
+.privy-x-group { display: grid; gap: var(--privy-space-2); padding-top: var(--privy-space-8); }
+.privy-x-group-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--privy-space-3); }
+.privy-x-group-head > * { margin: 0; }
+.privy-x-group .privy-x-steps { margin-top: var(--privy-space-2); }
+.privy-x-meta { font-size: var(--privy-type-caption); color: var(--privy-text-2); margin: 0; }
+.privy-x-skip { font-size: var(--privy-type-caption); color: var(--privy-text-2); margin: var(--privy-space-2) 0 0; }
+[hidden] { display: none !important; }
+/* ---- task row: area and status badges at the right ---- */
+.privy-x-step-body { max-width: none; }
+.privy-x-step-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--privy-space-2) var(--privy-space-6); }
+.privy-x-step-head .privy-x-step-text { max-width: 38rem; min-width: 0; }
+.privy-x-step-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--privy-space-2); flex-shrink: 0; max-width: 100%; }
+@media (max-width: 640px) { .privy-x-step-head { flex-wrap: wrap; } .privy-x-step-badges { justify-content: flex-start; } }
+/* ---- nav centered, still scrollable when it overflows ---- */
+.privy-x-nav li:first-child { margin-inline-start: auto; }
+.privy-x-nav li:last-child { margin-inline-end: auto; }
+
+/* ---- chart tooltip ---- */
+.privy-x-chartwrap { position: relative; }
+.privy-x-days:focus-visible { outline: 2px solid var(--privy-focus-ring, currentColor); outline-offset: 4px; border-radius: var(--privy-radius-xs); }
+.privy-x-tip { position: absolute; z-index: 3; pointer-events: none; padding: 6px 10px; border-radius: var(--privy-radius-sm); background: var(--privy-primary-bg); color: var(--privy-primary-fg); font-size: var(--privy-type-caption); line-height: 1.4; white-space: nowrap; box-shadow: var(--privy-shadow-md); font-variant-numeric: tabular-nums; }
+.privy-x-tip span { display: block; opacity: 0.85; }
+.privy-x-day.is-active .privy-x-day-bar { box-shadow: 0 0 0 2px var(--privy-canvas), 0 0 0 4px var(--privy-accent); }
+@media print { .privy-x-tip { display: none !important; } }
+
+/* ---- consistent space under every section heading ---- */
+.privy-section > .privy-x-head { margin-bottom: var(--privy-space-8); }
+.privy-section > .privy-x-head + * { margin-top: 0; }
+
+/* ---- starting point and what changes (approved layout) ---- */
+/* the one bold element: last year's sale, day by day, on the brand band */
+.sp { background: var(--privy-band); color: var(--privy-band-text); border-radius: var(--privy-radius-lg); padding: clamp(24px, 5vw, 56px); display: grid; gap: var(--privy-space-8); }
+.sp-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--privy-space-2) var(--privy-space-8); }
+.sp-head > * { margin: 0; }
+.sp-head h3 { font: 500 var(--privy-type-heading-l)/1.15 var(--privy-font-display); letter-spacing: -0.02em; color: var(--privy-band-accent); }
+.sp-src { font-size: var(--privy-type-compact); opacity: 0.8; }
+.sp-chart { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: clamp(3px, 0.8vw, 10px); height: clamp(180px, 26vw, 260px); padding-top: 52px; }
+.sp-col { display: grid; grid-template-rows: 1fr auto; gap: var(--privy-space-2); min-width: 0; }
+.sp-track { position: relative; display: flex; align-items: flex-end; }
+.sp-bar { width: 100%; border-radius: 3px 3px 0 0; background: color-mix(in srgb, var(--privy-band-text) 28%, transparent); }
+.sp-col.is-sale .sp-bar { background: var(--privy-band-accent); }
+.sp-ann { position: absolute; left: 50%; bottom: calc(100% + 0px); transform: translate(-50%, -8px); white-space: nowrap; text-align: center; font-size: var(--privy-type-compact); line-height: 1.3; }
+.sp-ann b { font-weight: 600; color: var(--privy-band-accent); font-variant-numeric: tabular-nums; }
+.sp-col:has(.sp-ann) .sp-track { padding-top: 0; }
+.sp-lab { text-align: center; font-size: 12px; line-height: 1.25; opacity: 0.75; font-variant-numeric: tabular-nums; }
+.sp-col.is-sale .sp-lab { opacity: 1; }
+.sp-foot { margin: 0; font-size: var(--privy-type-compact); opacity: 0.8; max-width: 52rem; }
+.sp-foot i { font-style: normal; display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: var(--privy-band-accent); vertical-align: -1px; margin-inline-end: 6px; }
+
+/* quiet: what Privy saw */
+.pv { display: grid; gap: var(--privy-space-12); }
+@media (min-width: 900px) { .pv { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--privy-space-16); } }
+.pv-col { display: grid; gap: var(--privy-space-5); align-content: start; }
+.pv-col > * { margin: 0; }
+.pv-col h3 { font: 500 var(--privy-type-heading-s)/1.3 var(--privy-font-body); color: var(--privy-text-2); }
+.pv-lead { font-size: var(--privy-type-lede); line-height: 1.4; color: var(--privy-text); max-width: 30rem; text-wrap: pretty; }
+.pv-lead b { display: block; font: 500 var(--privy-type-stat)/1.05 var(--privy-font-display); letter-spacing: -0.03em; color: var(--privy-text-strong); font-variant-numeric: tabular-nums; margin-bottom: 6px; }
+.pv-split { display: grid; gap: 6px; }
+.pv-split-top { display: flex; justify-content: space-between; font-size: var(--privy-type-compact); color: var(--privy-text-2); }
+.pv-split-top b { color: var(--privy-text-strong); font-weight: 600; font-variant-numeric: tabular-nums; margin-inline-start: 6px; }
+.pv-bar { display: flex; height: 12px; border-radius: 3px; overflow: hidden; background: var(--privy-surface-2); gap: 2px; }
+.pv-bar span:first-child { background: var(--privy-chart-1); }
+.pv-bar span:last-child { background: var(--privy-chart-3); }
+.pv-note { color: var(--privy-text-2); max-width: 30rem; text-wrap: pretty; }
+.pv-today { margin: 0; display: grid; gap: var(--privy-space-4); }
+.pv-today div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: var(--privy-space-4); align-items: baseline; }
+.pv-today dd { margin: 0; font: 500 var(--privy-type-heading-m)/1.1 var(--privy-font-display); letter-spacing: -0.02em; color: var(--privy-text-strong); font-variant-numeric: tabular-nums; order: -1; }
+.pv-today dt { color: var(--privy-text-2); text-wrap: pretty; }
+@media (max-width: 600px) { .sp-wd { display: none; } .sp-lab { font-size: 11px; } .sp-ann { font-size: 12px; } .sp-chart { padding-top: 44px; } }
+
+/* what changes: numbered list */
+.nl { list-style: none; margin: 0; padding: 0; counter-reset: nl; }
+.nl li { counter-increment: nl; display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: var(--privy-space-2) var(--privy-space-6); align-items: baseline; padding-block: var(--privy-space-6); border-top: 1px solid var(--privy-border); }
+.nl li:last-child { border-bottom: 1px solid var(--privy-border); }
+.nl li::before { content: counter(nl); font: 500 var(--privy-type-heading-l)/1 var(--privy-font-display); color: var(--privy-accent); font-variant-numeric: tabular-nums; }
+.nl li > div > * { margin: 0; }
+.nl-do { font: 500 var(--privy-type-heading-m)/1.3 var(--privy-font-display); letter-spacing: -0.01em; color: var(--privy-text-strong); text-wrap: balance; }
+.nl-why { color: var(--privy-text-2); margin-top: var(--privy-space-1) !important; max-width: 40rem; text-wrap: pretty; }
+.nl-task { font-size: var(--privy-type-compact); white-space: nowrap; }
+@media (max-width: 700px) { .nl li { grid-template-columns: 2rem minmax(0, 1fr); } .nl-task { grid-column: 2; white-space: normal; } }
+
+.pv { gap: var(--privy-space-6) !important; }
+@media (min-width: 900px) { .pv { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+.pv-card { background: var(--privy-surface); border-radius: var(--privy-radius-lg); box-shadow: 0 0 0 1px var(--privy-ring); padding: clamp(20px, 3vw, 32px); display: grid; gap: var(--privy-space-5); align-content: start; }
+.pv-card > * { margin: 0; }
+.pv-card h3 { font: 500 var(--privy-type-heading-m)/1.25 var(--privy-font-display); color: var(--privy-text-strong); margin: 0; }
+.pv-callout { background: var(--privy-highlight-bg); color: var(--privy-highlight-fg); border-radius: var(--privy-radius-md); padding: var(--privy-space-4) var(--privy-space-5); font-size: var(--privy-type-body); line-height: 1.45; }
+.pv-callout b { font: 500 var(--privy-type-heading-m)/1 var(--privy-font-display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-inline-end: 4px; }
+.sp-chart:focus-visible { outline: 2px solid var(--privy-band-accent); outline-offset: 6px; border-radius: 4px; }
+.sp { position: relative; }
+.sp-col { cursor: default; }
+.sp-col.is-active .sp-bar { box-shadow: 0 0 0 2px var(--privy-band), 0 0 0 4px var(--privy-band-text); }
+.sp-tip { position: absolute; z-index: 3; pointer-events: none; padding: 8px 12px; border-radius: var(--privy-radius-sm); background: var(--privy-canvas); color: var(--privy-text-strong); box-shadow: var(--privy-shadow-md); font-size: var(--privy-type-compact); line-height: 1.4; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sp-tip span { display: block; color: var(--privy-text-2); font-size: var(--privy-type-caption); }
+.sp-tip b { font-weight: 600; }
+
+.pv.is-single { grid-template-columns: 1fr !important; }
+.pv-today div { grid-template-columns: minmax(6.5rem, max-content) minmax(0, 1fr) !important; }
+.pv-today dd { white-space: nowrap; }
+.pv.is-single .pv-today { grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); display: grid; column-gap: var(--privy-space-10); }
+.sp { margin: 0 0 var(--privy-space-6); }
+@media print { .sp-tip { display: none !important; } .sp, .sp-bar, .pv-callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; } .sp, .pv-card, .nl li { break-inside: avoid; } }
+
+/* ---- review fixes ---- */
+.privy-x-detail { margin: var(--privy-space-1) 0 0; font-size: var(--privy-type-compact); line-height: 1.5; color: var(--privy-text-2); max-width: 32rem; text-wrap: pretty; overflow-wrap: anywhere; }
+.privy-x-step-body { min-width: 0; max-width: none; }
+.privy-x-step-text, .privy-x-step details p, .privy-x-send-msg, .privy-x-send-aud, .privy-x-changes p { overflow-wrap: anywhere; }
+.privy-x-step details p { max-width: 32rem; }
+.privy-x-dot { color: var(--privy-text-3); margin-inline-end: var(--privy-space-1); }
+
+.privy-x-step input { width: 22px; height: 22px; transform: translateY(4px); }
+.privy-x-step details summary { display: inline-flex; align-items: center; min-height: 32px; padding-inline-end: var(--privy-space-3); }
+.privy-x-step-date { padding-block: 4px; }
+/* ---- Resources ---- */
+.privy-x-res { list-style: none; margin-bottom: 0; padding: 0; border-bottom: 1px solid var(--privy-border); }
+.privy-x-res li { display: grid; gap: var(--privy-space-1); padding-block: var(--privy-space-4); border-top: 1px solid var(--privy-border); }
+@media (min-width: 720px) { .privy-x-res li { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--privy-space-8); align-items: baseline; } }
+.privy-x-res a { font-weight: 500; color: var(--privy-text-strong); }
+.privy-x-res p { margin: 0; color: var(--privy-text-2); text-wrap: pretty; }
+
+/* ---- Send calendar: stacked cards when the container is narrow ---- */
+.privy-x-sends { container-type: inline-size; }
+@container (max-width: 640px) {
+  .privy-x-sends .privy-table { min-width: 0; }
+  .privy-x-sends thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .privy-x-sends tbody tr { display: grid; grid-template-columns: auto auto minmax(0, 1fr); column-gap: var(--privy-space-3); row-gap: var(--privy-space-1); padding: var(--privy-space-3) var(--privy-space-4); border-bottom: 1px solid var(--privy-border); }
+  .privy-x-sends tbody tr > * { padding: 0; border: 0; }
+  .privy-x-sends tbody th { grid-column: 1 / -1; padding-top: var(--privy-space-2); }
+  .privy-x-sends tbody th:empty { display: none; }
+  .privy-x-sends tbody td:nth-of-type(3), .privy-x-sends tbody td:nth-of-type(4) { grid-column: 1 / -1; }
+  .privy-x-sends caption { padding-inline: var(--privy-space-4); }
+}
+
+/* ---- Print and PDF ---- */
+@page { size: Letter; margin: 14mm 12mm; }
+@media print {
+  .privy-x-nav, .privy-skip, .privy-x-plan-bar, #howto { display: none !important; }
+  #view-ws { display: none !important; }
+  #view-wk { display: block !important; }
+  body.privy-x-page { background: #FFFFFF; padding: 0; }
+  .privy-shell { max-width: none; padding-inline: 0; }
+  .privy-band, .privy-callout, .privy-badge, .privy-x-day-bar, tr[data-highlight] > * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .privy-band { box-shadow: none; padding: 28px 32px; }
+  .privy-section { padding-block: 28px; }
+  .privy-table-wrap { overflow: visible; box-shadow: none; border: 1px solid var(--privy-border); }
+  .privy-table { min-width: 0; }
+  .privy-x-step, .privy-x-changes li, .privy-x-res li, tr { break-inside: avoid; }
+  h2, h3, .privy-x-group-head { break-after: avoid; }
+  .privy-x-step details summary { display: none; }
+  .privy-x-step details p { margin-top: 2px; }
+  .privy-x-step.is-target, .privy-x-step:target { background: none; box-shadow: none; }
+  a { color: inherit; }
+  .privy-x-sends thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .privy-x-sends tbody tr { display: grid; grid-template-columns: 7rem 5rem 3.5rem minmax(0, 1fr) minmax(0, 12rem); column-gap: var(--privy-space-3); padding: 6px var(--privy-space-3); border-bottom: 1px solid var(--privy-border); }
+  .privy-x-sends tbody tr > * { padding: 0; border: 0; }
+  .privy-section, .privy-section + .privy-section { padding-block: 32px 20px; }
+  .privy-x-group { padding-top: 16px; }
+  .privy-x-step { padding-block: 8px; }
+}
+
+/* ---- v4: where you're starting, goals, sends list, basis ---- */
+.privy-x-start { display: grid; gap: var(--privy-space-12); }
+@media (min-width: 960px) { .privy-x-start { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--privy-space-16); } }
+.privy-x-start-col { display: grid; gap: var(--privy-space-5); align-content: start; }
+.privy-x-start-col > * { margin: 0; }
+.privy-x-start .privy-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--privy-space-6); }
+.privy-x-start .privy-stat-value { font-size: var(--privy-type-heading-l); }
+.privy-x-start .privy-x-days { height: 150px; grid-auto-columns: minmax(14px, 1fr); gap: 3px; padding-top: 24px; }
+.privy-x-start .privy-x-day { min-width: 14px; }
+.privy-x-start .privy-x-day-lab { font-size: 12px; }
+.privy-x-goals { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--privy-space-3); }
+@media (min-width: 720px) { .privy-x-goals { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--privy-space-8); } }
+.privy-x-goals li { display: grid; gap: 2px; padding-block: var(--privy-space-3); border-top: 1px solid var(--privy-border); }
+.privy-x-goals li > * { margin: 0; }
+.privy-x-goals strong { font-weight: 500; color: var(--privy-text-strong); }
+.privy-x-task-meta { display: flex; flex-wrap: wrap; gap: 2px var(--privy-space-2); align-items: center; }
+.privy-x-sets { font-size: var(--privy-type-caption); color: var(--privy-text-2); margin: var(--privy-space-2) 0 0; }
+.privy-x-sets strong { font-weight: 500; color: var(--privy-text-strong); }
+/* Send calendar as day groups */
+.privy-x-cal { container-type: inline-size; display: grid; gap: var(--privy-space-8); }
+.privy-x-sday-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--privy-space-3); padding-bottom: var(--privy-space-3); border-bottom: 1px solid var(--privy-border-strong); }
+.privy-x-sday-head > * { margin: 0; }
+.privy-x-sends-l { list-style: none; margin: 0; padding: 0; }
+.privy-x-send { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 16rem); gap: var(--privy-space-6); padding-block: var(--privy-space-4); border-bottom: 1px solid var(--privy-border); }
+.privy-x-send > div > * { margin: 0; }
+.privy-x-send-when { font-size: var(--privy-type-compact); color: var(--privy-text-2); font-variant-numeric: tabular-nums; margin: 0; }
+.privy-x-remix { display: grid; gap: var(--privy-space-8); grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.privy-x-remix-group h3 { font: 600 var(--privy-type-body)/1.4 var(--privy-font-body, inherit); color: var(--privy-text-strong); margin: 0 0 var(--privy-space-3); }
+.privy-x-remix-group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--privy-space-2); }
+.privy-x-remix-group li { background: var(--privy-surface-2); border-radius: var(--privy-radius-m, 12px); padding: var(--privy-space-3) var(--privy-space-4); color: var(--privy-text); }
+@media print { #remix { display: none !important; } }
+.privy-x-disclaimer { border-top: 1px solid var(--privy-border); margin-top: var(--privy-space-12); padding-top: var(--privy-space-6); }
+.privy-x-disclaimer p { margin: 0; max-width: 72ch; font-size: var(--privy-type-compact); color: var(--privy-text-2); }
+.privy-x-disclaimer a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.privy-x-tiers { list-style: none; margin: var(--privy-space-2) 0 0; padding: 0; display: grid; }
+.privy-x-tiers li { display: flex; justify-content: space-between; gap: var(--privy-space-4); flex-wrap: wrap; padding: var(--privy-space-2) 0; border-top: 1px solid var(--privy-border); }
+.privy-x-tiers li span:last-child { font-weight: 600; color: var(--privy-text-strong); font-variant-numeric: tabular-nums; }
+.pv-sellers { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--privy-space-3); }
+.pv-sellers li { display: grid; gap: 2px; }
+.pv-seller-name { margin: 0; font-weight: 600; color: var(--privy-text-strong); }
+.pv-seller-meta { margin: 0; font-size: var(--privy-type-compact); color: var(--privy-text-2); font-variant-numeric: tabular-nums; }
+/* CSM feedback, Oct 1 */
+.privy-section + .privy-section { border-top: 1px solid var(--privy-border); padding-top: var(--privy-space-16); }
+.privy-x-open { padding: clamp(24px, 4vw, 44px) !important; gap: var(--privy-space-6) !important; }
+.privy-x-open .privy-stats { padding-top: var(--privy-space-5) !important; }
+.privy-x-eyebrow { margin: 0 0 var(--privy-space-2); color: var(--privy-accent); font-weight: 600; }
+.privy-x-eyebrow + * { margin-top: 0 !important; }
+.nl-task { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: var(--privy-radius-pill); border: 1px solid var(--privy-accent); color: var(--privy-accent); font-weight: 600; text-decoration: none; }
+.nl-task::after { content: "\2192"; }
+@media (hover: hover) { .nl-task:hover { background: var(--privy-accent); color: var(--privy-canvas); } }
+.privy-x-goalcards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--privy-space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
+.privy-x-goalcards li { background: var(--privy-surface); border-radius: var(--privy-radius-lg); box-shadow: 0 0 0 1px var(--privy-ring); padding: var(--privy-space-5); display: grid; gap: var(--privy-space-2); align-content: start; }
+.privy-x-goalcards p { margin: 0; }
+.privy-x-goal { font-weight: 600; color: var(--privy-text-strong); }
+.privy-x-calnav { display: flex; align-items: center; gap: var(--privy-space-3); margin-bottom: var(--privy-space-4); }
+.privy-x-calnav h3 { margin: 0; min-width: 11rem; text-align: center; }
+.privy-x-calbtn { font: inherit; font-size: 18px; width: 44px; height: 44px; border-radius: var(--privy-radius-pill); border: 1px solid var(--privy-border); background: var(--privy-surface); color: var(--privy-text-strong); cursor: pointer; }
+.privy-x-calbtn:disabled { opacity: 0.35; cursor: default; }
+@media (hover: hover) { .privy-x-calbtn:not(:disabled):hover { background: var(--privy-surface-2); } }
+.privy-x-month h3 { margin: 0 0 var(--privy-space-3); }
+.privy-x-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-top: 1px solid var(--privy-border); border-left: 1px solid var(--privy-border); }
+.privy-x-dow { font-size: var(--privy-type-caption); color: var(--privy-text-2); padding: 6px; border-right: 1px solid var(--privy-border); border-bottom: 1px solid var(--privy-border); }
+.privy-x-cell { min-height: 92px; padding: 6px; border-right: 1px solid var(--privy-border); border-bottom: 1px solid var(--privy-border); display: grid; align-content: start; gap: 4px; min-width: 0; }
+.privy-x-cell.is-pad { background: var(--privy-surface-2); }
+.privy-x-cell.is-sale { background: var(--privy-highlight-bg); }
+.privy-x-cell.is-today { box-shadow: inset 0 0 0 2px var(--privy-accent); }
+.privy-x-cell-d { margin: 0; font-size: var(--privy-type-caption); color: var(--privy-text-2); font-variant-numeric: tabular-nums; }
+.privy-x-cell-d span { font-weight: 600; color: var(--privy-text-strong); }
+.privy-x-chip { all: unset; box-sizing: border-box; display: block; width: 100%; font-size: 12px; line-height: 1.3; padding: 4px 6px; border-radius: 6px; background: var(--privy-surface); box-shadow: 0 0 0 1px var(--privy-ring); color: var(--privy-text-strong); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+.privy-x-chip.is-done { text-decoration: line-through; color: var(--privy-text-2); }
+.privy-x-chip:focus-visible { outline: 2px solid var(--privy-accent); outline-offset: 1px; }
+@media (max-width: 640px) { .privy-x-cell { min-height: 56px; padding: 3px; } .privy-x-chip { font-size: 0; padding: 0; height: 8px; border-radius: 4px; background: var(--privy-accent); } .privy-x-cell-d span { display: none; } }
+.privy-x-caldlg { border: 0; border-radius: var(--privy-radius-lg); padding: 0; max-width: min(92vw, 32rem); width: 100%; background: var(--privy-surface); color: var(--privy-text); box-shadow: 0 20px 60px rgb(0 0 0 / 0.25); }
+.privy-x-caldlg::backdrop { background: rgb(6 43 55 / 0.45); }
+.privy-x-caldlg-in { padding: var(--privy-space-6); display: grid; gap: var(--privy-space-3); }
+.privy-x-caldlg-in > * { margin: 0; }
+.privy-x-caldlg .privy-x-step-badges { justify-content: flex-start; }
+.privy-x-caldone { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; }
+.privy-x-dlbtn { font: inherit; font-weight: 600; min-height: 44px; padding: 10px 20px; border-radius: var(--privy-radius-pill); border: 1px solid var(--privy-border); background: var(--privy-surface); color: var(--privy-text-strong); cursor: pointer; justify-self: start; }
+@media print { #view-cal, #view-tw, .privy-x-caldlg { display: none !important; } }
+.privy-x-send-when strong { font-weight: 400 !important; color: var(--privy-text-2) !important; }
+.privy-x-ch-label { font-weight: 600 !important; }
+.privy-x-daytag { background: var(--privy-mint-200) !important; color: var(--privy-spruce-950) !important; font-weight: 600; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.privy-x-doneby { display: block; font-size: var(--privy-type-compact); color: var(--privy-text-2); margin-top: 2px; }
+.privy-x-syncnote { font-size: var(--privy-type-compact); color: var(--privy-text-2); margin: 0 0 var(--privy-space-3); }
+@media print { .privy-x-syncnote { display: none; } }
+.privy-x-send-when strong { color: var(--privy-text-strong); font-weight: 500; }
+.privy-x-send-when { display: flex; align-items: center; align-self: start; gap: var(--privy-space-2); line-height: 1.5; }
+.privy-x-ch { display: inline-flex; color: var(--privy-accent); flex-shrink: 0; }
+.privy-x-ch svg { display: block; }
+.privy-x-ch { align-items: center; gap: 6px; }
+.privy-x-ch-label { color: var(--privy-text-strong); font-weight: 500; }
+.privy-x-ch-sep { display: none; }
+.privy-x-send-when { flex-direction: column; align-items: flex-start !important; gap: 2px !important; }
+.privy-x-send-msg { display: grid; gap: 2px; }
+.privy-x-send-aud { display: grid; gap: 2px; font-size: var(--privy-type-compact); color: var(--privy-text); }
+.privy-x-send-aud p { margin: 0; }
+@container (max-width: 640px) {
+  .privy-x-send { grid-template-columns: minmax(0, 1fr); gap: var(--privy-space-2); }
+}
+/* Basis */
+.privy-x-basis { display: grid; gap: var(--privy-space-8); }
+@media (min-width: 900px) { .privy-x-basis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--privy-space-12); } }
+.privy-x-basis > div { display: grid; gap: var(--privy-space-3); align-content: start; }
+.privy-x-basis > div > * { margin: 0; }
+@media print {
+  .privy-x-send { grid-template-columns: 7rem minmax(0, 1fr) minmax(0, 13rem); gap: var(--privy-space-4); padding-block: 6px; break-inside: avoid; }
+  .privy-x-sday-head { break-after: avoid; }
+}
+</style>
+</head>
+<body class="privy-x-page">
+<script>try { var t = localStorage.getItem("privy-plan-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
+<a class="privy-skip" href="#main">Skip to content</a>
+<nav class="privy-x-nav" aria-label="Plan sections"><div class="privy-x-nav-in"><ul id="nav"></ul><button type="button" class="privy-x-theme" id="themeToggle" aria-label="Switch to dark mode"></button></div></nav>
+<div class="privy-shell">
+  <header class="privy-header">
+    <svg class="privy-wordmark" viewBox="0 0 396 162" role="img" aria-label="Privy" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M104.509 72.8897V126.939H128.164V75.2091C128.164 62.5856 135.998 54.943 147.37 54.943C152.523 54.943 156.953 56.0076 160.509 57.6046V34.8479C156.535 33.289 152.352 32.3574 144.688 32.3574C120.33 32.3574 104.509 48.7072 104.509 72.8897Z"/><path d="M184.773 0C176.767 0 170.378 4.79087 170.378 12.2624V13.5171C170.378 20.7985 176.786 25.6084 184.773 25.6084C192.759 25.6084 198.996 20.7985 198.996 13.5171V12.2624C198.996 4.79087 192.778 0 184.773 0Z"/><path d="M196.505 34.8479H172.85V126.939H196.505V34.8479Z"/><path d="M46.6077 32.4715C20.861 32.4715 0.00125518 53.0798 0.00125518 81.1027C0.00125518 81.2738 0.00125518 81.4639 0.00125518 81.635C-0.0367754 82.0913 0.799897 140.989 1.08513 160H23.2569V123.897C23.2569 122.338 25.0634 121.445 26.3184 122.395C37.1381 130.684 51.8559 132.395 64.5581 127.928C76.4617 122.529 85.8742 111.901 90.3428 98.6882C90.3618 98.6692 90.3618 98.6502 90.3618 98.6502C99.5082 63.6312 77.3364 32.4715 46.5887 32.4715H46.6077ZM46.5506 108.384C33.6963 108.384 23.2759 97.0342 23.2759 83.0418C23.2759 69.0494 33.6963 57.6996 46.5506 57.6996C59.405 57.6996 69.8444 69.0494 69.8444 83.0418C69.8444 97.0342 59.405 108.384 46.5506 108.384Z"/><path d="M272.642 34.8479L252.011 96.5209L231.74 34.8479H205.956L239.746 126.92H262.868L298.066 34.8479H272.642Z"/><path d="M370.894 34.8479L349.027 94.7529L328.224 34.8479H302.439L337.123 124.259L321.302 159.981H346.536L395.975 34.8479H370.894Z"/></svg>
+    <div class="privy-meta" id="meta"></div>
+  </header>
+  <main id="main"></main>
+  <footer class="privy-footer">
+    <svg class="privy-wordmark" aria-hidden="true" viewBox="0 0 396 162" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M104.509 72.8897V126.939H128.164V75.2091C128.164 62.5856 135.998 54.943 147.37 54.943C152.523 54.943 156.953 56.0076 160.509 57.6046V34.8479C156.535 33.289 152.352 32.3574 144.688 32.3574C120.33 32.3574 104.509 48.7072 104.509 72.8897Z"/><path d="M184.773 0C176.767 0 170.378 4.79087 170.378 12.2624V13.5171C170.378 20.7985 176.786 25.6084 184.773 25.6084C192.759 25.6084 198.996 20.7985 198.996 13.5171V12.2624C198.996 4.79087 192.778 0 184.773 0Z"/><path d="M196.505 34.8479H172.85V126.939H196.505V34.8479Z"/><path d="M46.6077 32.4715C20.861 32.4715 0.00125518 53.0798 0.00125518 81.1027C0.00125518 81.2738 0.00125518 81.4639 0.00125518 81.635C-0.0367754 82.0913 0.799897 140.989 1.08513 160H23.2569V123.897C23.2569 122.338 25.0634 121.445 26.3184 122.395C37.1381 130.684 51.8559 132.395 64.5581 127.928C76.4617 122.529 85.8742 111.901 90.3428 98.6882C90.3618 98.6692 90.3618 98.6502 90.3618 98.6502C99.5082 63.6312 77.3364 32.4715 46.5887 32.4715H46.6077ZM46.5506 108.384C33.6963 108.384 23.2759 97.0342 23.2759 83.0418C23.2759 69.0494 33.6963 57.6996 46.5506 57.6996C59.405 57.6996 69.8444 69.0494 69.8444 83.0418C69.8444 97.0342 59.405 108.384 46.5506 108.384Z"/><path d="M272.642 34.8479L252.011 96.5209L231.74 34.8479H205.956L239.746 126.92H262.868L298.066 34.8479H272.642Z"/><path d="M370.894 34.8479L349.027 94.7529L328.224 34.8479H302.439L337.123 124.259L321.302 159.981H346.536L395.975 34.8479H370.894Z"/></svg>
+  </footer>
+</div>
+
+<!-- PLAN DATA: build_plan.py replaces the placeholder below with the validated plan-data.json. -->
+<script id="plan-data" type="application/json">/*PLAN_DATA*/</script>
+<script>
+(function () {
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  'use strict';
+  var main = document.getElementById('main');
+  var D;
+  try { D = JSON.parse(document.getElementById('plan-data').textContent); }
+  catch (e) { main.innerHTML = '<p class="privy-callout">This plan has no data yet. Run build_plan.py with a plan-data.json file.</p>'; return; }
+
+  /* ---------- helpers ---------- */
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var DAYMS = 86400000;
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ymd(iso) { var p = String(iso).slice(0, 10).split('-'); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  function dS(iso) { if (!iso) return ''; var d = iso instanceof Date ? iso : ymd(iso); return MON[d.getMonth()] + ' ' + d.getDate(); }
+  function dL(iso) { if (!iso) return ''; var d = iso instanceof Date ? iso : ymd(iso); return DAY[d.getDay()] + ', ' + MON[d.getMonth()] + ' ' + d.getDate(); }
+  var CH_ICON = {
+    email: '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><rect x="2.5" y="4.5" width="15" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 6l6.5 5 6.5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    sms: '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M4.5 4h11a2 2 0 0 1 2 2v6.5a2 2 0 0 1-2 2H9l-3.5 3v-3h-1a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.5 8.5h7M6.5 11h4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>'
+  };
+  function chIcon(ch) { var n = ch === 'sms' ? 'SMS' : ch === 'email' ? 'Email' : ''; return n ? '<span class="privy-x-ch">' + CH_ICON[ch] + '<span class="privy-x-ch-label">' + n + '</span></span><span class="privy-x-ch-sep" aria-hidden="true">\u00b7</span>' : ''; }
+  function dayPart(hm) { var h = +String(hm).split(':')[0]; return h < 10 ? 'Morning' : h < 12 ? 'Late morning' : h < 15 ? 'Early afternoon' : h < 18 ? 'Late afternoon' : 'Evening'; }
+  function tF(hm) { if (!hm) return ''; var p = hm.split(':'), h = +p[0]; var ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + ':' + p[1] + ap; }
+  function dtL(iso) { return dL(iso) + ' at ' + tF(String(iso).slice(11, 16)); }
+  var CUR = (D.meta && D.meta.currency) || 'USD';
+  function money(n) { try { return new Intl.NumberFormat('en-US', { style: 'currency', currency: CUR, maximumFractionDigits: 0 }).format(n); } catch (e) { return CUR + ' ' + Math.round(n).toLocaleString('en-US'); } }
+  function moneyK(n) { if (n < 1000) return money(n); try { return new Intl.NumberFormat('en-US', { style: 'currency', currency: CUR, notation: 'compact', maximumFractionDigits: 1 }).format(n); } catch (e) { return money(n); } }
+  function monday(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate() - ((d.getDay() + 6) % 7)); }
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  var nav = [], html = '';
+  function addNav(id, label) { nav.push('<li><a href="#' + id + '">' + esc(label) + '</a></li>'); }
+  function head(id, title, lede) { return '<div class="privy-x-head"><h2 class="privy-heading-l" id="' + id + '-h">' + esc(title) + '</h2>' + (lede ? '<p class="privy-lede">' + esc(lede) + '</p>' : '') + '</div>'; }
+  var EYEBROW = { sends: 'Your send calendar', popups: 'Your popup calendar' };
+  function section(id, title, lede, inner) { return '<section class="privy-section" id="' + id + '" aria-labelledby="' + id + '-h">' + (EYEBROW[id] ? '<p class="privy-label privy-x-eyebrow">' + EYEBROW[id] + '</p>' : '') + head(id, title, lede) + inner + '</section>'; }
+  var STATUS = { ready: ['Ready', 'success'], update: ['Needs update', 'warning'], missing: ['Missing', 'error'], unknown: ['', ''], question: ['Open question', 'highlight'] };
+  var PRIO = { P1: ['Must do', 'brand'], P2: ['Recommended', ''], P3: ['Nice to have', ''] };
+  function pbadge(p) { var x = PRIO[p]; return x ? '<span class="privy-x-nowrap"><span class="privy-badge privy-x-pri"' + (x[1] ? ' data-tone="' + x[1] + '"' : '') + '>' + x[0] + '</span></span>' : ''; }
+  function badge(st) { var s = STATUS[st] || [st, '']; if (!s[0]) return ''; return '<span class="privy-x-nowrap"><span class="privy-badge"' + (s[1] ? ' data-tone="' + s[1] + '"' : '') + '>' + esc(s[0]) + '</span></span>'; }
+  function table(caption, cols, rows) {
+    var h = '<div class="privy-table-wrap"><table class="privy-table">' + (caption ? '<caption>' + esc(caption) + '</caption>' : '') + '<thead><tr>';
+    cols.forEach(function (c) { h += '<th scope="col"' + (c.num ? ' class="privy-num"' : '') + '>' + esc(c.label) + '</th>'; });
+    h += '</tr></thead><tbody>';
+    rows.forEach(function (r) { h += '<tr>'; r.forEach(function (cell, i) { h += '<td' + (cols[i].num ? ' class="privy-num"' : '') + '>' + esc(cell) + '</td>'; }); h += '</tr>'; });
+    return h + '</tbody></table></div>';
+  }
+
+  var M = D.meta, W = D.window, bf = ymd(W.black_friday);
+  document.title = M.store_name + ' BFCM 2026 plan';
+  document.getElementById('meta').innerHTML = '<span>Last updated ' + esc(dS(M.prepared_date)) + ', ' + esc(M.prepared_date.slice(0, 4)) + '</span>';
+
+  /* ---------- names instead of internal codes ---------- */
+  var segName = {};
+  var SC = D.scope || {};
+  (((SC.segments || {}).included) || []).concat(((SC.segments || {}).skipped) || []).forEach(function (r) { segName[r.id] = r.name; });
+  function names(t) { return String(t || '').replace(/\bS\d\d\b/g, function (id) { return segName[id] || id; }); }
+
+  /* ---------- tasks and progress ---------- */
+  var T = D.tasks.slice().sort(function (a, b) { return ymd(a.date) - ymd(b.date); });
+  var key = 'bfcm-plan:' + (M.store_domain || M.store_name);
+  var saved = {}; try { saved = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) { saved = {}; }
+  var shared = null, sharedDb = null, sharedUser = null, me = '', doneBy = { planner: 'Privy BFCM Planner' };
+  function isDone(t) {
+    if (shared) return shared[t.id] ? !!shared[t.id].done : !!t.done;
+    return saved[t.id] !== undefined ? !!saved[t.id] : !!t.done;
+  }
+  var thisWeek = monday(today), nextWeek = new Date(thisWeek.getTime() + 7 * DAYMS);
+  var dueThisWeek = T.filter(function (t) { var d = ymd(t.date); return d >= thisWeek && d < nextWeek; }).length;
+  var lastDay = T.length ? ymd(T[T.length - 1].date) : bf;
+
+  /* ---------- 1. opening band: orientation only ---------- */
+  var daysTo = Math.round((bf - today) / DAYMS), saleEnd = ymd(W.offer_end);
+  html += '<section class="privy-band privy-x-open" aria-labelledby="plan-title">' +
+    '<div class="privy-stack" style="gap:20px;max-width:40rem"><h1 class="privy-title" id="plan-title">BFCM 2026 plan for ' + esc(M.store_name) + '</h1>' +
+    '<p class="privy-lede">' + esc(bandLine()) + '</p></div>' +
+    '<div class="privy-stats">' +
+      '<div class="privy-stat"><p class="privy-label">' + (daysTo > 0 ? 'Days to Black Friday' : (today <= saleEnd ? 'The sale is live' : 'The sale has ended')) + '</p><p class="privy-stat-value">' + (daysTo > 0 ? daysTo : (today <= saleEnd ? 'Now' : 'Done')) + '</p></div>' +
+      '<div class="privy-stat"><p class="privy-label">Tasks completed</p><p class="privy-stat-value"><span id="doneCount">0</span> of ' + T.length + '</p></div>' +
+      '<div class="privy-stat"><p class="privy-label">Due this week</p><p class="privy-stat-value">' + dueThisWeek + '</p></div>' +
+    '</div></section>';
+
+
+
+  var taskById = {}; T.forEach(function (t) { taskById[t.id] = t; });
+  function taskLink(id) { var t = taskById[id]; return t ? '<a href="#task-' + esc(id) + '" data-goto="' + esc(id) + '">' + esc(dS(t.date)) + ': ' + esc(t.text) + '</a>' : ''; }
+
+  /* ---------- 3. where you're starting: daily store revenue, then Privy last BFCM and today ---------- */
+  var R = D.review, TD = D.today;
+  var PLATFORM = { shopify: 'Shopify', bigcommerce: 'BigCommerce', wix: 'Wix', weebly: 'Weebly' }[M.platform] || 'your store';
+  if ((R && (R.daily || R.channels)) || TD) {
+    var inner = '';
+    if (R && R.daily && R.daily.days.length) {
+      var dd = R.daily.days, mx = Math.max.apply(null, dd.map(function (x) { return x.revenue; }));
+      var y0 = dd[0].date.slice(0, 4), bfy = ymd(y0 + '-11-01'); while (bfy.getDay() !== 4) bfy = new Date(bfy.getTime() + DAYMS); bfy = new Date(bfy.getTime() + 22 * DAYMS);
+      var cmy = new Date(bfy.getTime() + 3 * DAYMS);
+      var hs = R.daily.highlight ? ymd(R.daily.highlight.start) : bfy, he = R.daily.highlight ? ymd(R.daily.highlight.end) : cmy;
+      var cols = dd.map(function (x, i) {
+        var dt = ymd(x.date), sale = dt >= hs && dt <= he, peak = x.revenue === mx;
+        var plabel = R.daily.peak_label || (+dt === +bfy ? 'Black Friday' : +dt === +cmy ? 'Cyber Monday' : 'Best day');
+        return '<div class="sp-col' + (sale ? ' is-sale' : '') + '" data-i="' + i + '"><div class="sp-track">' + (peak ? '<span class="sp-ann">' + esc(plabel) + '<br><b>' + esc(moneyK(x.revenue)) + '</b></span>' : '') +
+          '<div class="sp-bar" style="height:' + Math.max(x.revenue / mx * 100, 1.2).toFixed(1) + '%"></div></div><div class="sp-lab"><span class="sp-wd">' + DAY[dt.getDay()] + '<br></span>' + dt.getDate() + '</div></div>';
+      }).join('');
+      inner += '<figure class="sp" aria-labelledby="sp-h"><div class="sp-head"><h3 id="sp-h">Daily Store Revenue - BFCM ' + esc(y0) + '</h3></div>' +
+        '<div class="sp-chart" id="spChart" tabindex="0" role="group" aria-label="Daily store revenue, ' + esc(dS(dd[0].date)) + ' to ' + esc(dS(dd[dd.length - 1].date)) + ', ' + esc(y0) + '. Use the left and right arrow keys to step through the days.">' + cols + '</div>' +
+        '<div class="sp-tip" id="spTip" hidden></div><p class="privy-x-sr" aria-live="polite" id="spLive"></p>' +
+        '<table class="privy-x-sr"><caption>Daily store revenue</caption><tbody>' + dd.map(function (x) { return '<tr><th>' + esc(dL(x.date)) + '</th><td>' + esc(money(x.revenue)) + '</td></tr>'; }).join('') + '</tbody></table>' +
+        '<figcaption class="sp-foot"><i></i>Order Revenue' + (String(R.daily.source || '').toLowerCase() === 'shopify' ? ' (Shopify)' : '') + '</figcaption></figure>';
+    }
+    var cards = '';
+    function split(a, b, la, lb) { var t = a + b || 1; return '<div class="pv-split"><div class="pv-split-top"><span>' + la + '<b>' + esc(moneyK(a)) + '</b></span><span>' + lb + '<b>' + esc(moneyK(b)) + '</b></span></div><div class="pv-bar" role="img" aria-label="' + Math.round(a / t * 100) + '% ' + String(la).toLowerCase() + ', ' + Math.round(b / t * 100) + '% ' + String(lb).toLowerCase() + '"><span style="flex:' + a + '"></span><span style="flex:' + b + '"></span></div></div>'; }
+    if (R && R.channels) {
+      var CH = R.channels, c1 = '<section class="pv-card" aria-labelledby="pv1"><h3 id="pv1">BFCM ' + esc((R.daily && R.daily.days[0].date.slice(0, 4)) || String(bf.getFullYear() - 1)) + ' at Privy</h3>';
+      if (CH.source === 'Merchant') c1 += '<p class="pv-lead"><b>' + esc(money(CH.total)) + '</b>from your previous email and SMS tool, as you reported it.</p>';
+      else {
+        var chWord = CH.by_channel && !(CH.by_channel.sms > 0) ? 'emails' : 'emails and SMS';
+        c1 += '<p class="pv-lead"><b>' + esc(money(CH.total)) + '</b>credited to your ' + chWord + ' during the sale' + (CH.basis === 'attribution_date' ? ', dated when each order was credited.' : '.') + '</p>';
+        if (CH.by_channel && CH.by_channel.sms > 0) c1 += split(CH.by_channel.email, CH.by_channel.sms, 'Email', 'SMS');
+        if (CH.by_type) c1 += split(CH.by_type.campaign, CH.by_type.flow, 'Campaigns', 'Flows');
+      }
+      if (R.callout) c1 += '<p class="pv-callout"><b>' + esc(R.callout.figure) + '</b> ' + esc(R.callout.text) + '</p>';
+      cards += c1 + '</section>';
+    }
+    var ST = R && R.store_totals;
+    if (ST && !(R.daily && R.daily.days)) {
+      var c3 = '<section class="pv-card" aria-labelledby="pv3"><h3 id="pv3">BFCM ' + esc(String(ymd(ST.from).getFullYear())) + ' at your store</h3>' +
+        '<p class="pv-lead"><b>' + esc(money(ST.total)) + '</b>in store revenue from ' + esc(Number(ST.orders).toLocaleString('en-US')) + ' orders (' + esc(dS(ST.from)) + ' to ' + esc(dS(ST.to)) + ').</p>';
+      if (ST.split) c3 += split(ST.split.a, ST.split.b, esc(ST.split.a_label), esc(ST.split.b_label));
+      cards += c3 + '</section>';
+    }
+    if (TD) cards += '<section class="pv-card" aria-labelledby="pv2"><h3 id="pv2">Today at Privy</h3><dl class="pv-today">' + TD.stats.map(function (x) { return '<div><dt>' + esc(x.text || x.label) + '</dt><dd>' + esc(x.value) + '</dd></div>'; }).join('') + '</dl></section>';
+    var TS = (R && R.top_sellers) || [];
+    if (TS.length) {
+      cards += '<section class="pv-card" aria-labelledby="pv4"><h3 id="pv4">Your top sellers</h3><ul class="pv-sellers">' + TS.map(function (t) {
+        var risk = Number(t.in_stock) <= Number(t.sold_last_bfcm) * 2;
+        return '<li><p class="pv-seller-name">' + esc(t.product) + (risk ? ' <span class="privy-badge" data-tone="warning">Could sell out</span>' : '') + '</p>' +
+          '<p class="pv-seller-meta">' + esc(Number(t.in_stock).toLocaleString('en-US')) + ' in stock \u00b7 ' + esc(Number(t.sold_last_bfcm).toLocaleString('en-US')) + ' sold last BFCM' + (t.backup ? ' \u00b7 Backup: ' + esc(t.backup) : '') + '</p></li>';
+      }).join('') + '</ul></section>';
+    }
+    var nCards = (cards.match(/class="pv-card"/g) || []).length;
+    if (cards) inner += '<div class="pv' + (nCards > 1 ? '' : ' is-single') + '">' + cards + '</div>';
+    addNav('start', 'Starting point');
+    html += section('start', "Where you're starting", null, inner);
+  }
+  /* what changes this year: numbered list, change first */
+  if (R && R.findings && R.findings.length) {
+    addNav('changes', 'Recommendations');
+    var recBasis = (R.daily || R.channels) ? 'your BFCM ' + ((R.daily && R.daily.days[0].date.slice(0, 4)) || String(bf.getFullYear() - 1)) + ' results and your Privy account today' : 'your Privy account today';
+    html += section('changes', 'Top recommendations', 'Based on ' + recBasis + ', these are the changes most likely to make a difference. Each one links to its task.', '<ol class="nl">' + R.findings.map(function (f) {
+      var t = taskById[f.task];
+      return '<li><div><p class="nl-do">' + esc(f.change) + '</p><p class="nl-why">' + esc(f.observation) + '</p></div>' + (t ? '<a class="nl-task" href="#task-' + esc(f.task) + '" data-goto="' + esc(f.task) + '">' + esc(f.task_label || 'Task due ' + dS(t.date)) + ', ' + esc(dS(t.date)) + '</a>' : '') + '</li>';
+    }).join('') + '</ol>');
+  }
+
+  /* ---------- 4. the plan: goals, then one task list, two views ---------- */
+  var CAT = { offer: 'Offer and codes', flows: 'Flows', displays: 'Displays and list growth', campaigns: 'Campaigns', segments: 'Segmentation and list health', site: 'Site and tech', compliance: 'Compliance and deliverability', reporting: 'Reporting and wrap-up' };
+  var CAT_ORDER = ['offer', 'flows', 'displays', 'campaigns', 'segments', 'site', 'compliance', 'reporting'];
+  var PRI = { P1: 'Before the first BFCM send', P2: 'Before launch', P3: 'If time allows' };
+  var EVID = { privy: 'From Privy', shopify: 'From Shopify', merchant: 'You told us', recommended: 'Privy recommends' };
+  function metaItems(list) {
+    list = list.filter(Boolean);
+    return list.map(function (x, i) { return '<span>' + esc(x) + (i < list.length - 1 ? '<span class="privy-x-sr">, </span><span class="privy-x-dot" aria-hidden="true"> \u00b7</span>' : '') + '</span>'; }).join('');
+  }
+  function taskRow(t, meta) {
+    var cid = 'cb-' + meta + '-' + esc(t.id), mid = 'meta-' + meta + '-' + esc(t.id);
+    return '<li class="privy-x-step" data-task="' + esc(t.id) + '"' + (meta === 'wk' ? ' id="task-' + esc(t.id) + '"' : '') + '><input type="checkbox" id="' + cid + '" data-cb="' + esc(t.id) + '" aria-describedby="' + mid + (t.detail ? ' det-' + meta + '-' + esc(t.id) : '') + '"><label for="' + cid + '" class="privy-x-step-date">' + esc(dS(t.date)) + '</label><div class="privy-x-step-body">' +
+      '<div class="privy-x-step-head"><label for="' + cid + '" class="privy-x-step-text">' + esc(t.text) + '</label>' +
+      '<span class="privy-x-step-badges" aria-hidden="true">' + (meta !== 'ws' ? '<span class="privy-x-nowrap"><span class="privy-badge">' + esc(CAT[t.category]) + '</span></span>' : '') + '</span></div>' +
+      '<p class="privy-x-sr" id="' + mid + '">' + esc(meta !== 'ws' ? CAT[t.category] : '') + '.</p>' +
+      (t.detail ? '<p class="privy-x-detail" id="det-' + meta + '-' + esc(t.id) + '">' + esc(names(t.detail)) + '</p>' : '') + '</div></li>';
+  }
+  var weeks = {}, wkOrder = [];
+  T.forEach(function (t) { var m = monday(ymd(t.date)), k = m.getTime(); if (!weeks[k]) { weeks[k] = []; wkOrder.push(k); } weeks[k].push(t); });
+  var saleStart = ymd(W.offer_start); saleStart.setHours(0, 0, 0, 0);
+  var byWeek = wkOrder.map(function (k) {
+    var m = new Date(k), end = new Date(k + 6 * DAYMS), isNow = k === thisWeek.getTime(), sale = end >= saleStart && m <= saleEnd;
+    return '<div class="privy-x-group"><div class="privy-x-group-head"><h3 class="privy-heading-m">Week of ' + esc(dS(m)) + '</h3>' + (isNow ? '<span class="privy-badge" data-tone="brand">This week</span>' : '') + (sale ? '<span class="privy-badge" data-tone="highlight">Sale week</span>' : '') + '</div>' +
+      '<ul class="privy-x-steps">' + weeks[k].map(function (t) { return taskRow(t, 'wk'); }).join('') + '</ul></div>';
+  }).join('');
+  var AS = D.already_set || [], SC2 = D.scope || {};
+  var byCat = CAT_ORDER.filter(function (c) { return T.some(function (t) { return t.category === c; }) || AS.some(function (a) { return a.category === c; }); }).map(function (c) {
+    var ts = T.filter(function (t) { return t.category === c; }), done = AS.filter(function (a) { return a.category === c; });
+    var sk = c === 'segments' ? ((SC2.segments || {}).skipped || []) : c === 'flows' ? ((SC2.flows || {}).skipped || []) : [];
+    return '<div class="privy-x-group"><div class="privy-x-group-head"><h3 class="privy-heading-m">' + esc(CAT[c]) + '</h3><p class="privy-x-meta">' + (ts.length ? ts.length + (ts.length === 1 ? ' task' : ' tasks') + ', ' + esc(dS(ts[0].date)) + ' to ' + esc(dS(ts[ts.length - 1].date)) : 'All set') + '</p></div>' +
+      (ts.length ? '<ul class="privy-x-steps">' + ts.map(function (t) { return taskRow(t, 'ws'); }).join('') + '</ul>' : '') +
+      (done.length ? '<p class="privy-x-sets"><strong>Already set:</strong> ' + done.map(function (a) { return esc(a.name); }).join(', ') + '</p>' : '') +
+      (sk.length ? '<p class="privy-x-sets"><strong>Skipping:</strong> ' + sk.map(function (s) { return esc(s.name) + ' (' + esc(s.reason) + ')'; }).join('; ') + '</p>' : '') + '</div>';
+  }).join('');
+  /* this week: tasks due this week, then next week */
+  var twEnd = new Date(thisWeek.getTime() + 7 * DAYMS), nwEnd = new Date(thisWeek.getTime() + 14 * DAYMS);
+  var dueTw = T.filter(function (t) { var d = ymd(t.date); return d >= thisWeek && d < twEnd; });
+  var dueNw = T.filter(function (t) { var d = ymd(t.date); return d >= twEnd && d < nwEnd; });
+  var thisWeekView = '<div class="privy-x-group"><div class="privy-x-group-head"><h3 class="privy-heading-m">Due this week</h3><p class="privy-x-meta">Week of ' + esc(dS(thisWeek)) + '</p></div>' +
+    (dueTw.length ? '<ul class="privy-x-steps">' + dueTw.map(function (t) { return taskRow(t, 'tw'); }).join('') + '</ul>' : '<p class="privy-x-meta">Nothing due this week.</p>') + '</div>' +
+    (dueNw.length ? '<div class="privy-x-group"><div class="privy-x-group-head"><h3 class="privy-heading-m">Coming up next week</h3></div><ul class="privy-x-steps">' + dueNw.map(function (t) { return taskRow(t, 'tw'); }).join('') + '</ul></div>' : '');
+  /* calendar: one month grid per month with tasks, Monday first */
+  var calView = (function () {
+    if (!T.length) return '';
+    var first = ymd(T[0].date), last = ymd(T[T.length - 1].date), out = '';
+    var tdy = new Date(); tdy.setHours(0, 0, 0, 0);
+    var special = {}; special[+new Date(bf.getTime() - DAYMS)] = 'Thanksgiving'; special[+bf] = 'Black Friday'; special[+new Date(bf.getTime() + 3 * DAYMS)] = 'Cyber Monday';
+    var saleS = ymd(W.offer_start.slice(0, 10));
+    for (var y = first.getFullYear(), mo = first.getMonth(); y < last.getFullYear() || (y === last.getFullYear() && mo <= last.getMonth()); mo++, (mo > 11 && (mo = 0, y++))) {
+      var m1 = new Date(y, mo, 1), lead = (m1.getDay() + 6) % 7, dim = new Date(y, mo + 1, 0).getDate();
+      var cells = '';
+      for (var b = 0; b < lead; b++) cells += '<div class="privy-x-cell is-pad" aria-hidden="true"></div>';
+      for (var dd = 1; dd <= dim; dd++) {
+        var dt = new Date(y, mo, dd), key = ymd(dt.getFullYear() + '-' + String(dt.getMonth() + 1).padStart(2, '0') + '-' + String(dd).padStart(2, '0'));
+        var iso = key.getFullYear() + '-' + String(key.getMonth() + 1).padStart(2, '0') + '-' + String(key.getDate()).padStart(2, '0');
+        var ts = T.filter(function (t) { return t.date === iso; });
+        var cls = 'privy-x-cell' + (key >= saleS && key <= saleEnd ? ' is-sale' : '') + (+key === +tdy ? ' is-today' : '');
+        cells += '<div class="' + cls + '"><p class="privy-x-cell-d">' + dd + (special[+key] ? ' <span>' + special[+key] + '</span>' : '') + '</p>' +
+          ts.map(function (t) { return '<button type="button" class="privy-x-chip" data-ctask="' + esc(t.id) + '" title="' + esc(t.text) + '">' + esc(t.text) + '</button>'; }).join('') + '</div>';
+      }
+      out += '<div class="privy-x-month" data-month="' + y + '-' + (mo + 1) + '" data-label="' + esc(m1.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })) + '" hidden><div class="privy-x-grid" role="presentation"><div class="privy-x-dow">Mon</div><div class="privy-x-dow">Tue</div><div class="privy-x-dow">Wed</div><div class="privy-x-dow">Thu</div><div class="privy-x-dow">Fri</div><div class="privy-x-dow">Sat</div><div class="privy-x-dow">Sun</div>' + cells + '</div></div>';
+    }
+    return '<div class="privy-x-calnav"><button type="button" class="privy-x-calbtn" id="calPrev" aria-label="Previous month">\u2190</button><h3 class="privy-heading-m" id="calTitle" aria-live="polite"></h3><button type="button" class="privy-x-calbtn" id="calNext" aria-label="Next month">\u2192</button></div>' + out;
+  })();
+  function bandLine() {
+    function n(x, one, many) { return x + ' ' + (x === 1 ? one : many); }
+    var rows = (D.sends && D.sends.rows) || [], em = rows.filter(function (r) { return r.channel === 'email'; }).length, sm = rows.filter(function (r) { return r.channel === 'sms'; }).length;
+    var pu = ((D.popups && D.popups.rows) || []).filter(function (r) { return (r.kind || 'popup') === 'popup'; }).length;
+    var parts = [n(T.length, 'task', 'tasks')];
+    if (em) parts.push(n(em, 'email', 'emails'));
+    if (sm) parts.push(sm + ' SMS');
+    if (!em && !sm && pu) parts.push(n(pu, 'popup', 'popups'));
+    var list = parts.length > 2 ? parts.slice(0, -1).join(', ') + ', and ' + parts[parts.length - 1] : parts.join(' and ');
+    return 'Built from your store\u2019s own numbers, with ' + list + ' to get you through Cyber Monday.';
+  }
+  var P = D.plan, planInner = '';
+  var G = D.goals || {};
+  var gl = (G.merchant_goal ? [{ goal: G.merchant_goal, sub: 'Your goal' }] : []).concat((G.items || []).map(function (g) { return { goal: g.goal, sub: 'By ' + dS(g.by) + ' · ' + g.check }; }));
+  if (gl.length) planInner += '<div class="privy-stack" style="gap:12px"><h3 class="privy-heading-m">Goals</h3><ul class="privy-x-goalcards">' + gl.map(function (g) { return '<li><p class="privy-x-goal">' + esc(g.goal) + '</p><p class="privy-caption">' + esc(g.sub) + '</p></li>'; }).join('') + '</ul></div>';
+  planInner += '<div class="privy-callout privy-x-offer-box"><p class="privy-label">Your offer</p><p class="privy-x-offer">' + esc(D.sale.headline) + '</p><p>' + esc(dtL(W.offer_start)) + ' to ' + esc(dtL(W.offer_end)) + '. ' + esc(D.sale.terms) + '</p>' +
+    (D.sale.margin && (D.sale.margin.rows || []).length ? '<ul class="privy-x-tiers">' + D.sale.margin.rows.map(function (m) { return '<li><span>' + esc(m.tier) + '</span><span>You keep ' + esc(m.keep) + '</span></li>'; }).join('') + '</ul>' + (D.sale.margin.note ? '<p class="privy-caption">' + esc(D.sale.margin.note) + '</p>' : '') : '') + '</div>';
+  if (D.warmup) planInner += '<div class="privy-callout"><p style="margin:0 0 8px">' + esc(D.warmup.intro) + '</p><ol class="privy-x-list">' + D.warmup.steps.map(function (s) { return '<li>' + esc(names(s.audience)) + ' <span class="privy-caption">from ' + esc(dS(s.from)) + '</span></li>'; }).join('') + '</ol></div>';
+  planInner += '<div class="privy-x-plan-bar"><div class="privy-tabs" role="tablist" aria-label="Plan view"><button role="tab" id="tab-wk" aria-selected="true" aria-controls="view-wk">By week</button><button role="tab" id="tab-tw" aria-selected="false" aria-controls="view-tw" tabindex="-1">This week</button><button role="tab" id="tab-ws" aria-selected="false" aria-controls="view-ws" tabindex="-1">By area</button><button role="tab" id="tab-cal" aria-selected="false" aria-controls="view-cal" tabindex="-1">Calendar</button></div></div>' +
+    '<div id="view-wk" role="tabpanel" aria-labelledby="tab-wk">' + byWeek + '</div><div id="view-tw" role="tabpanel" aria-labelledby="tab-tw" hidden>' + thisWeekView + '</div><div id="view-ws" role="tabpanel" aria-labelledby="tab-ws" hidden>' + byCat + '</div><div id="view-cal" role="tabpanel" aria-labelledby="tab-cal" hidden>' + calView + '</div>' +
+    '<dialog class="privy-x-caldlg" id="calDlg" aria-labelledby="calDlgTitle"><div class="privy-x-caldlg-in"><p class="privy-label" id="calDlgDate"></p><h3 class="privy-heading-m" id="calDlgTitle"></h3><div class="privy-x-step-badges" id="calDlgBadges"></div><p id="calDlgDetail" class="privy-x-detail"></p><label class="privy-x-caldone"><input type="checkbox" id="calDlgCb"> Done</label><button type="button" class="privy-x-dlbtn" id="calDlgClose">Close</button></div></dialog>';
+  addNav('plan', 'The plan');
+  html += section('plan', P.title, P.lede, planInner);
+
+  /* ---------- 5. send calendar: grouped by day (display-only plans have none) ---------- */
+  var S = D.sends || { rows: [] }, byDay = {}, dayOrder = [];
+  S.rows.forEach(function (r) { if (!byDay[r.date]) { byDay[r.date] = []; dayOrder.push(r.date); } byDay[r.date].push(r); });
+  var cmD = new Date(bf.getTime() + 3 * DAYMS);
+  var cal = dayOrder.map(function (ds) {
+    var dt = ymd(ds), off = Math.round((dt - new Date(bf.getTime() - DAYMS)) / DAYMS);
+    var nm = { 0: 'Thanksgiving', 1: 'Black Friday', 2: 'Small Business Saturday', 4: 'Cyber Monday' }[off] || (dt > cmD && dt <= saleEnd ? 'Extension' : (dt >= ymd(W.offer_start.slice(0, 10)) && dt <= saleEnd ? 'Sale' : ''));
+    return '<section class="privy-x-sday" aria-label="' + esc(dL(ds)) + '"><div class="privy-x-sday-head"><h3 class="privy-heading-s">' + esc(dL(ds)) + '</h3>' + (nm ? '<span class="privy-badge privy-x-daytag">' + esc(nm) + '</span>' : '') + '</div><ul class="privy-x-sends-l">' +
+      byDay[ds].map(function (r) {
+        var msg = r.channel === 'none' ? '<p class="privy-caption">' + esc(r.message) + '</p>' : (r.subject ? '<p class="privy-x-step-text">' + esc(r.subject) + '</p><p class="privy-caption">' + esc(r.message || '') + '</p>' : '<p data-literal>' + esc(r.message) + '</p>');
+        return '<li class="privy-x-send"><p class="privy-x-send-when">' + chIcon(r.channel) + '<strong>' + esc(dayPart(r.time)) + '</strong></p><div class="privy-x-send-msg">' + msg + '</div><div class="privy-x-send-aud"><p>Include: ' + esc(names(r.audience)) + '</p>' + (r.suppress ? '<p>Exclude: ' + esc(names(r.suppress)) + '</p>' : '') + '</div></li>';
+      }).join('') + '</ul></section>';
+  }).join('');
+  var PU = D.popups;
+  if (PU && (PU.rows || []).length) {
+    var puDay = {}, puOrder = [];
+    PU.rows.forEach(function (r) { if (!puDay[r.start]) { puDay[r.start] = []; puOrder.push(r.start); } puDay[r.start].push(r); });
+    puOrder.sort();
+    var puIcon = '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><rect x="2.5" y="3.5" width="15" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 7h15" stroke="currentColor" stroke-width="1.6"/></svg>';
+    var puCal = puOrder.map(function (ds) {
+      return '<section class="privy-x-sday" aria-label="' + esc(dL(ds)) + '"><div class="privy-x-sday-head"><h3 class="privy-heading-s">' + esc(dL(ds)) + '</h3></div><ul class="privy-x-sends-l">' +
+        puDay[ds].map(function (r) {
+          var kind = r.kind === 'bar' ? 'Bar' : r.kind === 'embedded' ? 'Embedded form' : 'Popup';
+          return '<li class="privy-x-send"><p class="privy-x-send-when"><span class="privy-x-ch">' + puIcon + '<span class="privy-x-ch-label">' + kind + '</span></span><strong>' + esc(r.end ? 'Until ' + dS(r.end) : 'Ongoing') + '</strong></p>' +
+            '<div class="privy-x-send-msg"><p class="privy-x-step-text">' + esc(r.name) + '</p><p class="privy-caption">' + esc(r.offer) + '</p></div>' +
+            '<div class="privy-x-send-aud"><p>Shown to: ' + esc(r.audience) + '</p></div></li>';
+        }).join('') + '</ul></section>';
+    }).join('');
+    addNav('popups', 'Your popup calendar');
+    html += section('popups', PU.title, PU.lede, '<div class="privy-x-cal">' + puCal + '</div>');
+  }
+  if (S.rows.length) {
+    addNav('sends', 'Your send calendar');
+    html += section('sends', S.title, S.lede, '<div class="privy-x-cal">' + cal + '</div>');
+  }
+
+  /* ---------- 7. resources (Privy links only) ---------- */
+  var RES = [
+    { name: 'Privy BFCM Hub', url: 'https://www.privy.com/bfcm', text: 'Guides, calendars, and templates for the season, in one place.' },
+    { name: 'BFCM Playbook', url: 'https://www.privy.com/bfcm-playbook', text: 'Subject lines, send schedules, and SMS examples.' },
+    { name: 'BFCM Resource Center', url: 'https://help.privy.com/docs/guides/privy-black-friday-resource-center', text: 'Help articles for setting up displays, countdowns, and SMS in Privy.' }
+  ].concat(D.resources || []);
+  /* ---------- make it yours (locked groups + up to 4 plan-specific ideas) ---------- */
+  var REMIX_GROUPS = [
+    ['Change the plan', ['Move the launch to Black Friday and push everything back.', 'I\u2019m doing this with a partner. Split the tasks between us.', 'Swap the Cyber Monday offer for free shipping.']],
+    ['Bring in more', ['Here\u2019s last year\u2019s sales spreadsheet. Use it to adjust the plan.', 'We\u2019re launching a new collection on Nov 10. Work it into the calendar.', 'Here are my competitors\u2019 Black Friday emails. What should I do differently?']],
+    ['Go deeper', ['Which popup should I change first, and why?', 'Run the full interview. I have more time now.', 'Check my plan against my live Privy settings.']],
+    ['Make it fit how you work', ['Give me a one-page version I can print.', 'Turn this week\u2019s tasks into a checklist for my team.', 'Show me only the tasks due this week.']]
+  ];
+  var mine = (D.remix || []).slice(0, 4);
+  if (mine.length) REMIX_GROUPS.unshift(['Ideas for this plan', mine]);
+  addNav('remix', 'Make it yours');
+  html += section('remix', 'Make it yours', 'This plan is yours. Change anything, bring in more of what you know, or start over. Just ask your agent in the chat where you built it. A few ideas:',
+    '<div class="privy-x-remix">' + REMIX_GROUPS.map(function (g) {
+      return '<div class="privy-x-remix-group"><h3>' + esc(g[0]) + '</h3><ul>' + g[1].map(function (q) { return '<li>\u201c' + esc(q) + '\u201d</li>'; }).join('') + '</ul></div>';
+    }).join('') + '</div>');
+
+
+  addNav('resources', 'Resources');
+  html += section('resources', 'More help from Privy', null, '<ul class="privy-x-res">' + RES.map(function (r) {
+    return '<li><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(r.name) + '</a><p>' + esc(r.text) + '</p></li>';
+  }).join('') + '</ul>');
+
+  /* ---------- disclaimer (locked; Privy-approved wording) ---------- */
+  var asOf = esc(dS(M.prepared_date)) + ', ' + esc(String(new Date(M.prepared_date + 'T12:00:00').getFullYear()));
+  html += '<footer class="privy-x-disclaimer"><p>This plan was generated by the Privy BFCM Planner using AI, based on your Privy data, any other services you connected, and the information you provided as of ' + asOf + '. ' +
+    'The Planner only uses aggregate Privy data and does not make changes to your Privy account or any other connected service. ' +
+    'The plan is for informational purposes, may contain errors, and does not guarantee results, so please review all figures, offers, and dates before acting on them. ' +
+    'It is not legal advice. You are responsible for making sure your marketing and promotions comply with applicable laws, including those on consent, messaging hours, and promotional claims. ' +
+    'Use of the Planner is subject to Privy\u2019s <a href="https://www.privy.com/terms-of-service" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://www.privy.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and the terms of the AI platform you use to access it.</p></footer>';
+  main.innerHTML = html;
+  document.getElementById('nav').innerHTML = nav.join('');
+
+  /* ---------- smart punctuation on rendered text (not SMS copy) ---------- */
+  function smart(t) {
+    return t.replace(/\.\.\./g, '\u2026').replace(/(\w)'(\w)/g, '$1\u2019$2')
+      .replace(/(^|[\s(\[\u201c])'/g, '$1\u2018').replace(/'/g, '\u2019')
+      .replace(/(^|[\s(\[\u2018])"/g, '$1\u201c').replace(/"/g, '\u201d');
+  }
+  function smarten(root) {
+    var w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: function (n) {
+      for (var el = n.parentNode; el && el !== root; el = el.parentNode) { if (el.hasAttribute && el.hasAttribute('data-literal')) return NodeFilter.FILTER_REJECT; }
+      return NodeFilter.FILTER_ACCEPT; } });
+    var n; while ((n = w.nextNode())) { var v = smart(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; }
+  }
+  smarten(main); smarten(document.getElementById('meta'));
+
+  /* ---------- tabs ---------- */
+  var tabs = ['tab-wk', 'tab-tw', 'tab-ws', 'tab-cal'].map(function (x) { return document.getElementById(x); });
+  function show(i) {
+    tabs.forEach(function (t, j) { t.setAttribute('aria-selected', i === j ? 'true' : 'false'); t.tabIndex = i === j ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = i !== j; });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(i); });
+    t.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var n = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; show(n); tabs[n].focus(); e.preventDefault(); } });
+  });
+
+  /* ---------- calendar: task details in a dialog ---------- */
+  (function calendarMonths() {
+    var months = Array.prototype.slice.call(document.querySelectorAll('.privy-x-month'));
+    if (!months.length) return;
+    var now = new Date(), key = now.getFullYear() + '-' + (now.getMonth() + 1), idx = 0;
+    months.forEach(function (m, i) { if (m.getAttribute('data-month') === key) idx = i; });
+    var prev = document.getElementById('calPrev'), next = document.getElementById('calNext'), title = document.getElementById('calTitle');
+    function go(i) {
+      idx = Math.max(0, Math.min(months.length - 1, i));
+      months.forEach(function (m, j) { m.hidden = j !== idx; });
+      title.textContent = months[idx].getAttribute('data-label');
+      prev.disabled = idx === 0; next.disabled = idx === months.length - 1;
+    }
+    prev.addEventListener('click', function () { go(idx - 1); });
+    next.addEventListener('click', function () { go(idx + 1); });
+    go(idx);
+  })();
+  (function calendar() {
+    var dlg = document.getElementById('calDlg'); if (!dlg) return;
+    var cur = null, cb = document.getElementById('calDlgCb');
+    document.getElementById('view-cal').addEventListener('click', function (e) {
+      var chip = e.target.closest('[data-ctask]'); if (!chip) return;
+      var t = taskById[chip.getAttribute('data-ctask')]; if (!t) return;
+      cur = t;
+      document.getElementById('calDlgDate').textContent = dL(t.date);
+      document.getElementById('calDlgTitle').textContent = t.text;
+      document.getElementById('calDlgBadges').innerHTML = '<span class="privy-x-nowrap"><span class="privy-badge">' + esc(CAT[t.category]) + '</span></span>';
+      var det = document.getElementById('calDlgDetail'); det.textContent = t.detail ? names(t.detail) : ''; det.hidden = !t.detail;
+      cb.checked = isDone(t);
+      if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+    });
+    cb.addEventListener('change', function () {
+      if (!cur) return;
+      var box = document.querySelector('#view-wk [data-cb="' + cur.id + '"]');
+      if (box && box.checked !== cb.checked) box.click();
+    });
+    function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+    document.getElementById('calDlgClose').addEventListener('click', close);
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+  })();
+
+  /* ---------- checkboxes: one state, both views ---------- */
+  function refresh() {
+    var done = 0;
+    T.forEach(function (t) {
+      var d = isDone(t); if (d) done++;
+      var rec = shared && shared[t.id], who = '';
+      if (d && rec && rec.at) {
+        var nm = rec.by === 'planner' ? doneBy.planner : (doneBy[rec.by] || '');
+        var dt = new Date(rec.at);
+        who = 'Done' + (nm ? ' by ' + nm : '') + ' \u00b7 ' + dt.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+      }
+      document.querySelectorAll('[data-ctask="' + t.id + '"]').forEach(function (c) { c.classList.toggle('is-done', d); });
+      document.querySelectorAll('[data-task="' + t.id + '"]').forEach(function (li) {
+        li.classList.toggle('is-done', d); li.querySelector('input').checked = d;
+      });
+    });
+    document.getElementById('doneCount').textContent = done;
+  }
+  main.addEventListener('change', function (e) {
+    var id = e.target.dataset && e.target.dataset.cb; if (!id) return;
+    var checked = e.target.checked;
+    if (shared && sharedDb) {
+      var prev = shared[id];
+      shared[id] = { done: checked, by: me, at: Date.now() }; refresh();
+      sharedDb.collection('progress').doc(id).set({ done: checked, by: me, at: Date.now() }).catch(function (err) {
+        if (prev) shared[id] = prev; else delete shared[id]; refresh();
+        syncNote(err && (err.code === 'permission_denied' || err.code === 'not_granted') ? 'You can see progress on this plan, but not change it. Ask the owner for edit access.' : 'That change didn\u2019t save. Try again.');
+      });
+      return;
+    }
+    saved[id] = checked;
+    try { localStorage.setItem(key, JSON.stringify(saved)); } catch (err) {}
+    refresh();
+  });
+  /* links from "What changes this year" open the week view and land on the task */
+  main.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-goto]'); if (!a) return;
+    e.preventDefault(); show(0);
+    var li = document.querySelector('#view-wk [data-task="' + a.dataset.goto + '"]');
+    document.querySelectorAll('.privy-x-step.is-target').forEach(function (x) { x.classList.remove('is-target'); });
+    if (li) { li.classList.add('is-target'); li.scrollIntoView({ block: 'center', behavior: REDUCED ? 'auto' : 'smooth' }); }
+  });
+  refresh();
+  (function chartTips() {
+    var box = document.getElementById('spChart'); if (!box || !D.review || !D.review.daily) return;
+    var tip = document.getElementById('spTip'), live = document.getElementById('spLive'), wrap = box.closest('.sp');
+    var days = D.review.daily.days, cols = [].slice.call(box.querySelectorAll('.sp-col')), cur = -1;
+    var peak = days.reduce(function (m, d, i) { return d.revenue > days[m].revenue ? i : m; }, 0);
+    function show(i) {
+      cur = Math.max(0, Math.min(days.length - 1, i));
+      cols.forEach(function (c, j) { c.classList.toggle('is-active', j === cur); });
+      var d = days[cur], dt = ymd(d.date), lab = dL(dt) + ', ' + dt.getFullYear();
+      var val = money(d.revenue) + (typeof d.orders === 'number' ? ' \u00b7 ' + d.orders.toLocaleString('en-US') + (d.orders === 1 ? ' order' : ' orders') : '');
+      tip.innerHTML = '<span>' + esc(lab) + '</span><b>' + esc(val) + '</b>'; tip.hidden = false;
+      var bar = cols[cur].querySelector('.sp-bar'), wr = wrap.getBoundingClientRect(), br = bar.getBoundingClientRect();
+      var left = br.left - wr.left + br.width / 2 - tip.offsetWidth / 2;
+      tip.style.left = Math.max(8, Math.min(wrap.clientWidth - tip.offsetWidth - 8, left)) + 'px';
+      tip.style.top = Math.max(8, br.top - wr.top - tip.offsetHeight - 10) + 'px';
+      if (document.activeElement === box) live.textContent = lab + ': ' + val;
+    }
+    function hide() { tip.hidden = true; cols.forEach(function (c) { c.classList.remove('is-active'); }); }
+    cols.forEach(function (c, i) { c.addEventListener('pointerenter', function () { show(i); }); c.addEventListener('pointerdown', function () { show(i); }); });
+    box.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse' && document.activeElement !== box) hide(); });
+    box.addEventListener('focus', function () { show(cur < 0 ? peak : cur); });
+    box.addEventListener('blur', hide);
+    box.addEventListener('keydown', function (e) {
+      var k = e.key;
+      if (k === 'ArrowRight' || k === 'ArrowLeft' || k === 'Home' || k === 'End') { e.preventDefault(); show(k === 'Home' ? 0 : k === 'End' ? days.length - 1 : cur + (k === 'ArrowRight' ? 1 : -1)); }
+      else if (k === 'Escape') hide();
+    });
+    document.addEventListener('pointerdown', function (e) { if (!box.contains(e.target)) hide(); });
+    window.addEventListener('resize', function () { if (!tip.hidden && cur >= 0) show(cur); });
+  })();
+
+  var navLinks = [].slice.call(document.querySelectorAll('#nav a'));
+  var navTargets = navLinks.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  function markNav() {
+    var cur = -1;
+    navTargets.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= 120) cur = i; });
+    navLinks.forEach(function (a, i) { if (i === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    var ul = document.getElementById('nav'), act = navLinks[cur];
+    if (act && (act.offsetLeft < ul.scrollLeft || act.offsetLeft + act.offsetWidth > ul.scrollLeft + ul.clientWidth)) ul.scrollTo({ left: Math.max(0, act.offsetLeft - 16), behavior: REDUCED ? 'auto' : 'smooth' });
+  }
+  window.addEventListener('scroll', markNav, { passive: true }); markNav();
+  var themeBeforePrint = null;
+  window.addEventListener('beforeprint', function () {
+    themeBeforePrint = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', 'light');
+  });
+  window.addEventListener('afterprint', function () {
+    if (themeBeforePrint) document.documentElement.setAttribute('data-theme', themeBeforePrint); else document.documentElement.removeAttribute('data-theme');
+  });
+  function syncNote(text) {
+    var n = document.getElementById('syncNote'), host = document.getElementById('view-wk');
+    if (!n && host) { n = document.createElement('p'); n.id = 'syncNote'; n.className = 'privy-x-syncnote'; n.setAttribute('role', 'status'); host.parentNode.insertBefore(n, host); }
+    if (n) n.textContent = text;
+  }
+  (async function connectProgress() {
+    var db = null;
+    var hook = window.planProgress || null; /* other hosts (a ChatGPT Site) supply { db, user } with the same interface */
+    try { db = hook && hook.db ? hook.db : (window.claude && window.claude.use ? await window.claude.use('db') : null); } catch (e) { db = null; }
+    if (!db) return;
+    try { sharedUser = hook && hook.user ? hook.user : await window.claude.use('user'); if (sharedUser) me = (await sharedUser.id()) || ''; } catch (e) { sharedUser = null; }
+    sharedDb = db;
+    db.collection('progress').onSnapshot(function (snap) {
+      var next = {};
+      snap.docs.forEach(function (doc) { var v = doc.data() || {}; next[doc.id] = { done: !!v.done, by: String(v.by || ''), at: Number(v.at) || 0 }; });
+      shared = next; refresh();
+      var ids = Object.keys(next).map(function (k) { return next[k].by; }).filter(function (b) { return b && b !== 'planner' && !doneBy[b]; });
+      if (ids.length && sharedUser && sharedUser.profiles) {
+        sharedUser.profiles(Array.from(new Set(ids))).then(function (ps) { ids.forEach(function (i) { doneBy[i] = (ps[i] && ps[i].name) || ''; }); refresh(); }).catch(function () {});
+      }
+    }, function () { shared = null; sharedDb = null; refresh(); });
+  })();
+  (function themeToggle() {
+    var btn = document.getElementById('themeToggle'); if (!btn) return;
+    var root = document.documentElement, mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    var MOON = '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><path d="M16 12.2A6.5 6.5 0 0 1 7.8 4a6.5 6.5 0 1 0 8.2 8.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+    var SUN = '<svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 2.5v2M10 15.5v2M2.5 10h2M15.5 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M4.7 15.3l1.4-1.4M13.9 6.1l1.4-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+    function current() { var t = root.getAttribute('data-theme'); return t === 'light' || t === 'dark' ? t : (mq && mq.matches ? 'dark' : 'light'); }
+    function paint() { var dark = current() === 'dark'; btn.innerHTML = dark ? SUN : MOON; btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode'); btn.title = dark ? 'Light mode' : 'Dark mode'; }
+    btn.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('privy-plan-theme', next); } catch (e) {}
+      paint();
+    });
+    if (mq && mq.addEventListener) mq.addEventListener('change', paint);
+    paint();
+  })();
+})();
+</script>
+</body>
+</html>

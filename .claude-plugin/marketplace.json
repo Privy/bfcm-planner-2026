@@ -1,0 +1,13 @@
+{
+  "name": "privy",
+  "owner": { "name": "Privy", "url": "https://www.privy.com" },
+  "metadata": { "description": "Claude plugins from Privy for ecommerce marketing." },
+  "plugins": [
+    {
+      "name": "privy-bfcm-planner",
+      "source": "./plugins/privy-bfcm-planner",
+      "description": "Builds your Black Friday and Cyber Monday plan from your Privy and Shopify data and a short interview.",
+      "version": "1.2.0"
+    }
+  ]
+}
